@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago | FITGYM</title>
+    <link rel="stylesheet" href="../CSS/planes.css">
+    <style>
+        .pago-container {
+            max-width: 500px;
+            margin: 40px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .resumen-compra {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
+        .form-group input { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; }
+        .btn-pagar { width: 100%; padding: 12px; background: #e50914; color: white; border: none; font-weight: bold; border-radius: 6px; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <main class="pago-container">
+        <h2>Resumen de Inscripción</h2>
+        <div class="resumen-compra">
+            <p><strong>Sede:</strong> <span id="resumen-sede">Cargando...</span></p>
+            <p><strong>Plan:</strong> <span id="resumen-plan">Cargando...</span></p>
+        </div>
+
+        <form onsubmit="alert('¡Inscripción realizada con éxito!'); return false;">
+            <div class="form-group">
+                <label>Nombre Completo</label>
+                <input type="text" required placeholder="Tu nombre">
+            </div>
+            <div class="form-group">
+                <label>Número de Tarjeta</label>
+                <input type="text" required placeholder="0000 0000 0000 0000">
+            </div>
+            <button type="submit" class="btn-pagar">COMPLETAR PAGO</button>
+        </form>
+    </main>
+
+    <script>
+        // Leer parámetros recibidos en la URL
+        const params = new URLSearchParams(window.location.search);
+        const gym = params.get('gym') || 'No especificada';
+        const plan = params.get('plan') || 'No especificado';
+
+        // Mostrar datos en pantalla
+        document.getElementById('resumen-sede').textContent = gym.toUpperCase();
+        document.getElementById('resumen-plan').textContent = `PLAN ${plan.toUpperCase()}`;
+    </script>
+</body>
+</html>

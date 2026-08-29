@@ -1,0 +1,66 @@
+/* FITZONE — Imperium Cross | Estilos compartidos por el equipo.
+   No cambiar los nombres de las clases (btn-ic-*, navbar-ic, card-ic, etc). */
+
+:root{
+  --ic-black:#1C1C1C;
+  --ic-gray:#5C5C5C;
+  --ic-red:#B71C1C;
+  --ic-gold:#E0A800;
+  --font-titulo:'Anton', sans-serif;
+  --font-detalle:'Barlow Condensed', sans-serif;
+}
+
+body{ font-family:'Barlow', sans-serif; margin:0; }
+h1,h2,h3,.titulo{ font-family:var(--font-titulo); text-transform:uppercase; }
+.eyebrow{ font-family:var(--font-detalle); text-transform:uppercase; font-weight:600; color:var(--ic-red); }
+a{ color:var(--ic-red); }
+a:hover{ color:var(--ic-gold); }
+
+/* Botones */
+.btn-ic-primary{ background:var(--ic-red); border:2px solid var(--ic-red); color:#fff; font-family:var(--font-detalle); font-weight:700; text-transform:uppercase; }
+.btn-ic-primary:hover{ background:transparent; color:var(--ic-red); }
+.btn-ic-outline{ background:transparent; border:2px solid #fff; color:#fff; font-family:var(--font-detalle); font-weight:700; text-transform:uppercase; }
+.btn-ic-outline:hover{ background:#fff; color:var(--ic-black); }
+.btn-ic-gold{ background:var(--ic-gold); border:2px solid var(--ic-gold); color:var(--ic-black); font-family:var(--font-detalle); font-weight:700; text-transform:uppercase; }
+.btn-ic-gold:hover{ background:transparent; color:var(--ic-gold); }
+
+/* Navbar */
+.navbar-ic{ background:var(--ic-black); border-bottom:3px solid var(--ic-red); }
+.navbar-ic .navbar-brand{ display:flex; align-items:center; gap:.5rem; }
+.navbar-ic .navbar-brand img{ height:40px; width:40px; border-radius:50%; }
+.navbar-ic .navbar-brand span{ font-family:var(--font-titulo); color:#fff; }
+.navbar-ic .navbar-brand em{ color:var(--ic-red); font-style:normal; }
+.navbar-ic .nav-link{ font-family:var(--font-detalle); color:#fff !important; text-transform:uppercase; }
+.navbar-ic .nav-link.active, .navbar-ic .nav-link:hover{ color:var(--ic-gold) !important; }
+
+/* Secciones */
+section{ padding:3.5rem 0; }
+.section-dark{ background:var(--ic-black); color:#fff; }
+.section-dark .eyebrow{ color:var(--ic-gold); }
+.hero-ic{ background:var(--ic-black); color:#fff; padding:6rem 0 3.5rem; }
+.hero-ic em{ font-style:normal; color:var(--ic-red); }
+
+/* Pestañas disciplinas */
+.disc-tabs .nav-link{ font-family:var(--font-detalle); text-transform:uppercase; color:var(--ic-gray); border:none; border-bottom:3px solid transparent; }
+.disc-tabs .nav-link.active{ color:var(--ic-red); border-bottom:3px solid var(--ic-red); }
+
+/* Tabla horarios */
+.table-ic thead th{ background:var(--ic-black); color:var(--ic-gold); font-family:var(--font-detalle); text-transform:uppercase; }
+.badge-halterofilia{ background:var(--ic-red); color:#fff; }
+.badge-atletismo{ background:var(--ic-gold); color:#1c1c1c; }
+.badge-gimnastico{ background:var(--ic-gray); color:#fff; }
+.aviso-ref{ border-left:4px solid var(--ic-gold); background:#fff8e6; padding:.8rem 1rem; font-size:.9rem; color:#5c4a00; }
+
+/* Acordeón FAQ */
+.accordion-ic .accordion-button{ font-family:var(--font-detalle); text-transform:uppercase; font-weight:700; }
+.accordion-ic .accordion-button:not(.collapsed){ background:var(--ic-black); color:var(--ic-gold); }
+
+/* Formulario reserva */
+.form-ic label{ font-family:var(--font-detalle); text-transform:uppercase; font-size:.85rem; }
+.cupos-indicador{ font-family:var(--font-detalle); font-weight:700; }
+
+/* Footer */
+.footer-ic{ background:var(--ic-black); color:#bbb; padding:2.2rem 0 1rem; }
+.footer-ic h6{ color:#fff; font-family:var(--font-detalle); text-transform:uppercase; }
+.footer-ic a{ color:#bbb; text-decoration:none; }
+.footer-ic a:hover{ color:var(--ic-gold); }

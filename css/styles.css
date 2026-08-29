@@ -1,6 +1,3 @@
-/* FITZONE — Imperium Cross | Estilos compartidos por el equipo.
-   No cambiar los nombres de las clases (btn-ic-*, navbar-ic, card-ic, etc). */
-
 :root{
   --ic-black:#1C1C1C;
   --ic-gray:#5C5C5C;
@@ -13,8 +10,23 @@
 body{ font-family:'Barlow', sans-serif; margin:0; }
 h1,h2,h3,.titulo{ font-family:var(--font-titulo); text-transform:uppercase; }
 .eyebrow{ font-family:var(--font-detalle); text-transform:uppercase; font-weight:600; color:var(--ic-red); }
-a{ color:var(--ic-red); }
+a{ color:var(--ic-red); text-decoration: none; }
 a:hover{ color:var(--ic-gold); }
+
+/* Barra superior de promociones */
+.promo-bar {
+  background-color: var(--ic-red);
+  color: #ffffff;
+  font-family: var(--font-detalle);
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1050;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
 
 /* Botones */
 .btn-ic-primary{ background:var(--ic-red); border:2px solid var(--ic-red); color:#fff; font-family:var(--font-detalle); font-weight:700; text-transform:uppercase; }
@@ -26,6 +38,7 @@ a:hover{ color:var(--ic-gold); }
 
 /* Navbar */
 .navbar-ic{ background:var(--ic-black); border-bottom:3px solid var(--ic-red); }
+.navbar-ic.fixed-top { top: 38px !important; }
 .navbar-ic .navbar-brand{ display:flex; align-items:center; gap:.5rem; }
 .navbar-ic .navbar-brand img{ height:40px; width:40px; border-radius:50%; }
 .navbar-ic .navbar-brand span{ font-family:var(--font-titulo); color:#fff; }
@@ -37,8 +50,50 @@ a:hover{ color:var(--ic-gold); }
 section{ padding:3.5rem 0; }
 .section-dark{ background:var(--ic-black); color:#fff; }
 .section-dark .eyebrow{ color:var(--ic-gold); }
-.hero-ic{ background:var(--ic-black); color:#fff; padding:6rem 0 3.5rem; }
-.hero-ic em{ font-style:normal; color:var(--ic-red); }
+
+/* Estilos para el Carrusel Hero Comercial */
+.hero-carousel-section {
+  background-color: #121212;
+  border-bottom: 4px solid var(--ic-red);
+}
+
+.carousel-item {
+  transition: transform 0.8s ease-in-out;
+}
+
+.slide-bg-1 {
+  background: linear-gradient(90deg, rgba(28,28,28,0.95) 0%, rgba(20,20,20,0.7) 100%), url('../img/img-carrusel3.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.slide-bg-2 {
+  background: linear-gradient(90deg, rgba(18,18,18,0.95) 0%, rgba(18,18,18,0.7) 100%), url('../img/IMG_1349.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.slide-bg-3 {
+  background: linear-gradient(90deg, rgba(28,28,28,0.95) 0%, rgba(40,40,40,0.7) 100%), url('../img/IMG_1441.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.carousel-control-prev, .carousel-control-next {
+  width: 5%;
+}
+
+/* Tarjetas de Sedes */
+.card.bg-black {
+  background-color: #151515 !important;
+  border: 1px solid #333 !important;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.card.bg-black:hover {
+  transform: translateY(-5px);
+  border-color: var(--ic-red) !important;
+}
 
 /* Pestañas disciplinas */
 .disc-tabs .nav-link{ font-family:var(--font-detalle); text-transform:uppercase; color:var(--ic-gray); border:none; border-bottom:3px solid transparent; }

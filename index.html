@@ -1,342 +1,430 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GYM | Imperium Cross - Chosica</title>
-<link rel="icon" href="img/logo.png">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GYM | Imperium Cross - Chosica</title>
+  <link rel="icon" href="img/logo.png">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
-<!-- BARRA DE PROMOCIÓN SUPERIOR -->
-<div class="promo-bar text-center py-2 px-3">
-  <span>🔥 <strong>¡PROMOCIÓN DE LOCURA!</strong> 50% de descuento en tu primer mes + Matrícula Gratis. <a href="planes.html" class="text-white text-decoration-underline ms-2">¡Lo quiero ya!</a></span>
-</div>
+  <!-- BARRA DE PROMOCIÓN SUPERIOR -->
+  <div class="promo-bar text-center py-2 px-3">
+    <span>🔥 <strong>¡PROMOCIÓN DE LOCURA!</strong> 50% de descuento en tu primer mes + Matrícula Gratis. <a
+        href="planes.html" class="text-white text-decoration-underline ms-2">¡Lo quiero ya!</a></span>
+  </div>
 
-<!-- NAVBAR -->
-<header>
-  <nav class="navbar navbar-expand-lg navbar-ic fixed-top" style="top: 38px;">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">
-        <img src="img/logo.png" alt="Logo Imperium Cross">
-        <span>IMPERIUM <em>CROSS</em></span>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navMain">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
-          <li class="nav-item"><a class="nav-link" href="#informacion">Información</a></li>
-          <li class="nav-item"><a class="nav-link" href="planes.html">Planes</a></li>
-          <li class="nav-item"><a class="nav-link" href="entrenamiento.html">Entrenamiento</a></li>
-          <li class="nav-item"><a class="nav-link" href="tienda.html">Tienda</a></li>
-          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-ic fixed-top" style="top: 38px;">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <img src="img/logo.png" alt="Logo Imperium Cross">
+          <span>IMPERIUM <em>CROSS</em></span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navMain">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="#informacion">Información</a></li>
+            <li class="nav-item"><a class="nav-link" href="planes.html">Planes</a></li>
+            <li class="nav-item"><a class="nav-link" href="entrenamiento.html">Entrenamiento</a></li>
+            <li class="nav-item"><a class="nav-link" href="tienda.html">Tienda</a></li>
+            <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+          </ul>
+          <button class="btn btn-ic-gold ms-lg-3 mt-3 mt-lg-0" data-bs-toggle="modal"
+            data-bs-target="#modalReserva">Reserva tu clase</button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main style="padding-top: 38px;">
+
+    <!-- HERO / CARRUSEL DE PROMOCIONES -->
+    <section class="hero-carousel-section" style="padding-top: 3.5rem;">
+      <div id="heroCarousel" class="carousel slide carousel-fade shadow-lg" data-bs-ride="carousel"
+        data-bs-interval="5000">
+
+        <!-- Indicadores -->
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
+            aria-current="true"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+        </div>
+
+        <!-- Slides -->
+        <div class="carousel-inner">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active slide-bg-1">
+            <div class="container d-flex flex-column justify-content-center align-items-start text-start py-5"
+              style="min-height: 480px;">
+              <span class="badge bg-danger text-uppercase px-3 py-2 mb-3 fw-bold rounded-pill">Box de CrossFit ·
+                Chosica</span>
+              <h1 class="display-4 fw-bold text-white mb-3" style="font-family: var(--font-titulo);">ENTRENA COMO <span
+                  class="text-danger">GUERRERO</span></h1>
+              <p class="lead text-light mb-4" style="max-width: 600px;">Halterofilia, atletismo y gimnástico en clases
+                de 1 hora, con grupos reducidos y un coach por turno.</p>
+              <div class="d-flex gap-3 flex-wrap">
+                <button class="btn btn-ic-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalReserva">Reserva
+                  tu clase</button>
+                <a href="planes.html" class="btn btn-ic-outline btn-lg">Ver Planes</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="carousel-item slide-bg-2">
+            <div class="container d-flex flex-column justify-content-center align-items-start text-start py-5"
+              style="min-height: 480px;">
+              <span class="badge bg-warning text-dark text-uppercase px-3 py-2 mb-3 fw-bold rounded-pill">🔥 Oferta
+                Limitada</span>
+              <h1 class="display-4 fw-bold text-white mb-3" style="font-family: var(--font-titulo);"><span
+                  class="text-warning">50% DESCUENTO</span> EN TU MES</h1>
+              <p class="lead text-light mb-4" style="max-width: 600px;">Matrícula gratis adquiriendo cualquiera de
+                nuestros planes trimestrales o anuales hoy mismo.</p>
+              <div class="d-flex gap-3 flex-wrap">
+                <a href="planes.html" class="btn btn-warning text-dark fw-bold btn-lg text-uppercase">¡Lo quiero ya!</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="carousel-item slide-bg-3">
+            <div class="container d-flex flex-column justify-content-center align-items-start text-start py-5"
+              style="min-height: 480px;">
+              <span class="badge bg-danger text-uppercase px-3 py-2 mb-3 fw-bold rounded-pill">Comunidad Imperium</span>
+              <h1 class="display-4 fw-bold text-white mb-3" style="font-family: var(--font-titulo);">MÁS QUE UN <span
+                  class="text-danger">BOX</span></h1>
+              <p class="lead text-light mb-4" style="max-width: 600px;">Equipamiento profesional, competencias internas
+                y una comunidad que te empuja a superar tus límites.</p>
+              <div class="d-flex gap-3 flex-wrap">
+                <button class="btn btn-ic-outline btn-lg" data-bs-toggle="modal" data-bs-target="#modalReserva">Únete
+                  ahora</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Flechas de navegación -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon bg-dark rounded-circle p-3 shadow" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon bg-dark rounded-circle p-3 shadow" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- SECCIÓN: CONOCE NUESTRO BOX (INSTALACIONES) -->
+    <section class="py-5 bg-dark border-top border-bottom border-secondary border-opacity-25">
+      <div class="container py-4">
+        <div class="text-center mb-5">
+          <p class="eyebrow text-warning">Instalaciones Oficiales</p>
+          <h2 class="display-6 fw-bold text-uppercase text-white" style="font-family: var(--font-titulo);">CONOCE
+            NUESTRO <span class="text-warning">BOX EN CHOSICA</span></h2>
+          <p class="text-secondary">Espacios diseñados y equipados para que entrenes con comodidad, seguridad y el mejor
+            ambiente.</p>
+        </div>
+
+        <!-- Grilla Breve de Instalaciones -->
+        <div class="row g-4">
+
+          <!-- Zona de Espera -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card bg-black border border-secondary border-opacity-25 h-100 shadow-sm">
+              <div style="height: 180px; overflow: hidden;">
+                <img src="img/espera.jpg" alt="Zona de Espera" style="width:100%; height:100%; object-fit:cover;">
+              </div>
+              <div class="card-body p-3">
+                <h5 class="fw-bold text-white fs-6 mb-1"><i class="bi bi-people-fill text-warning me-2"></i>Zona de
+                  Espera</h5>
+                <p class="text-secondary small mb-0">Un espacio cómodo para recibir a la comunidad antes de cada WOD.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zona de Nutrición -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card bg-black border border-secondary border-opacity-25 h-100 shadow-sm">
+              <div style="height: 180px; overflow: hidden;">
+                <img src="img/nutricion.jpg" alt="Zona de Nutrición" style="width:100%; height:100%; object-fit:cover;">
+              </div>
+              <div class="card-body p-3">
+                <h5 class="fw-bold text-white fs-6 mb-1"><i class="bi bi-heart-pulse-fill text-warning me-2"></i>Zona de
+                  Nutrición</h5>
+                <p class="text-secondary small mb-0">Asesoría profesional personalizada para potenciar tu rendimiento
+                  físico.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zona de Materiales -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card bg-black border border-secondary border-opacity-25 h-100 shadow-sm">
+              <div style="height: 180px; overflow: hidden;">
+                <img src="img/materiales.jpg" alt="Zona de Materiales"
+                  style="width:100%; height:100%; object-fit:cover;">
+              </div>
+              <div class="card-body p-3">
+                <h5 class="fw-bold text-white fs-6 mb-1"><i class="bi bi-box-seam-fill text-warning me-2"></i>Zona de
+                  Materiales</h5>
+                <p class="text-secondary small mb-0">Mancuernas, kettlebells y accesorios ordenados para optimizar tu
+                  tiempo.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Zona de Máquinas -->
+          <div class="col-md-6 col-lg-3">
+            <div class="card bg-black border border-secondary border-opacity-25 h-100 shadow-sm">
+              <div style="height: 180px; overflow: hidden;">
+                <img src="img/maquinas.jpg" alt="Zona de Máquinas" style="width:100%; height:100%; object-fit:cover;">
+              </div>
+              <div class="card-body p-3">
+                <h5 class="fw-bold text-white fs-6 mb-1"><i class="bi bi-speedometer2 text-warning me-2"></i>Zona de
+                  Máquinas</h5>
+                <p class="text-secondary small mb-0">Remos Concept2 y caminadoras para tus entrenamientos metabólicos.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- DISCIPLINAS -->
+    <section class="section-dark">
+      <div class="container">
+        <p class="eyebrow text-center">Lo que entrenamos</p>
+        <h2 class="text-center mb-4">NUESTRAS DISCIPLINAS</h2>
+        <ul class="nav nav-tabs disc-tabs justify-content-center border-0 mb-4">
+          <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab"
+              data-bs-target="#pane-halterofilia">Halterofilia</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="tab"
+              data-bs-target="#pane-atletismo">Atletismo</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="tab"
+              data-bs-target="#pane-gimnastico">Gimnástico</button></li>
         </ul>
-        <button class="btn btn-ic-gold ms-lg-3 mt-3 mt-lg-0" data-bs-toggle="modal" data-bs-target="#modalReserva">Reserva tu clase</button>
+        <div class="tab-content text-center">
+          <div class="tab-pane fade show active" id="pane-halterofilia">
+            <p>Levantamientos olímpicos (arranque y envión): técnica, fuerza y potencia.</p>
+          </div>
+          <div class="tab-pane fade" id="pane-atletismo">
+            <p>Velocidad, resistencia y capacidad cardiovascular.</p>
+          </div>
+          <div class="tab-pane fade" id="pane-gimnastico">
+            <p>Control corporal, movilidad y fuerza: dominadas, muscle-ups y más.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFORMACIÓN DEL GIMNASIO -->
+    <section id="informacion">
+      <div class="container">
+        <p class="eyebrow">Conócenos</p>
+        <h2 class="mb-3">INFORMACIÓN DEL GIMNASIO</h2>
+        <p style="max-width:640px;">
+          Imperium Cross es un box de <strong>CrossFit</strong> en Chosica: clases de
+          <strong>60 min</strong>, <strong>~15 atletas</strong> y <strong>1 coach</strong> por
+          turno, combinando halterofilia, atletismo y gimnástico.
+        </p>
+
+        <h3 class="h5 mt-4 mb-2">Disciplina del día</h3>
+        <div class="aviso-ref mb-3"><i class="bi bi-info-circle me-1"></i> Calendario <strong>referencial</strong>,
+          horarios pendientes de confirmar.</div>
+        <div class="table-responsive">
+          <table class="table table-ic align-middle">
+            <thead>
+              <tr>
+                <th>Día</th>
+                <th>Disciplina</th>
+                <th>Aforo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th>Lunes</th>
+                <td><span class="badge badge-halterofilia">Halterofilia</span></td>
+                <td>15</td>
+              </tr>
+              <tr>
+                <th>Martes</th>
+                <td><span class="badge badge-atletismo">Atletismo</span></td>
+                <td>15</td>
+              </tr>
+              <tr>
+                <th>Miércoles</th>
+                <td><span class="badge badge-gimnastico">Gimnástico</span></td>
+                <td>15</td>
+              </tr>
+              <tr>
+                <th>Jueves</th>
+                <td><span class="badge badge-halterofilia">Halterofilia</span></td>
+                <td>15</td>
+              </tr>
+              <tr>
+                <th>Viernes</th>
+                <td><span class="badge badge-atletismo">Atletismo</span></td>
+                <td>15</td>
+              </tr>
+              <tr>
+                <th>Sábado</th>
+                <td><span class="badge badge-gimnastico">Gimnástico</span></td>
+                <td>15</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="h5 mt-4 mb-2">Preguntas frecuentes</h3>
+        <div class="accordion accordion-ic" id="faqAccordion">
+          <div class="accordion-item">
+            <h4 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse"
+                data-bs-target="#faq1">¿Necesito experiencia previa?</button></h4>
+            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">No, el coach adapta la carga a tu nivel.</div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h4 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse"
+                data-bs-target="#faq2">¿Dónde veo planes y precios?</button></h4>
+            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+              <div class="accordion-body">En la sección <a href="planes.html">Planes e inscripción</a>.</div>
+            </div>
+          </div>
+        </div>
+        <p class="text-secondary small mt-3 mb-0"><i class="bi bi-geo-alt-fill me-1"></i>Chosica, Lurigancho-Chosica,
+          Lima</p>
+      </div>
+    </section>
+
+    <!-- UBICACIÓN DEL BOX -->
+    <section class="section-dark py-5">
+      <div class="container">
+        <p class="eyebrow text-center">Ubicación Oficial</p>
+        <h2 class="text-center mb-5">NUESTRO BOX</h2>
+        <div class="row justify-content-center">
+          <div class="col-md-6">
+            <div class="card bg-black text-white border-secondary h-100 shadow">
+              <img src="img/img-carrusel3.jpg" class="card-img-top" alt="Imperium Cross Chosica"
+                style="height: 220px; object-fit: cover;">
+              <div class="card-body d-flex flex-column text-center">
+                <h5 class="card-title text-warning fw-bold">Imperium Cross - Chosica</h5>
+                <p class="card-text small text-secondary mb-3"><i class="bi bi-geo-alt-fill me-1"></i>Av. 28 de Julio
+                  581, Chosica, Perú</p>
+                <a href="contacto.html" class="btn btn-ic-gold mt-auto text-uppercase fw-bold">Contáctanos</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="text-center py-5" style="background-color: #111;">
+      <div class="container">
+        <h2 class="mb-3 text-white">¿LISTO PARA TU PRIMER WOD?</h2>
+        <button class="btn btn-ic-gold btn-lg" data-bs-toggle="modal" data-bs-target="#modalReserva">Reserva tu clase
+          gratis</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL: formulario de reserva -->
+  <div class="modal fade" id="modalReserva" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header" style="background:var(--ic-black);">
+          <h5 class="modal-title text-white">Reserva tu clase</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="reservaConfirmacion" class="alert alert-success d-none"></div>
+          <form id="formReserva" class="form-ic needs-validation" novalidate>
+            <div class="mb-3">
+              <label for="nombreReserva" class="form-label">Nombre completo</label>
+              <input type="text" class="form-control" id="nombreReserva" required minlength="3"
+                placeholder="Ej. Ana Torres">
+              <div class="invalid-feedback">Ingresa tu nombre (mínimo 3 caracteres).</div>
+            </div>
+            <div class="mb-3">
+              <label for="whatsappReserva" class="form-label">WhatsApp</label>
+              <input type="tel" class="form-control" id="whatsappReserva" required pattern="9[0-9]{8}"
+                placeholder="9XXXXXXXX">
+              <div class="invalid-feedback">Ingresa un número peruano válido (9 dígitos).</div>
+            </div>
+            <div class="mb-2">
+              <label for="turnoReserva" class="form-label">Turno de interés</label>
+              <select class="form-select" id="turnoReserva" required>
+                <option value="" selected disabled>Selecciona un turno</option>
+                <option value="manana">Turno mañana</option>
+                <option value="mediodia">Turno mediodía</option>
+                <option value="tarde">Turno tarde</option>
+                <option value="noche">Turno noche</option>
+              </select>
+              <div class="invalid-feedback">Selecciona un turno.</div>
+            </div>
+            <p class="cupos-indicador small mb-3" id="cuposIndicador"></p>
+            <button type="submit" class="btn btn-ic-primary w-100">Confirmar preinscripción</button>
+          </form>
+        </div>
       </div>
     </div>
-  </nav>
-</header>
+  </div>
 
-<main style="padding-top: 38px;">
-
-  <!-- HERO / CARRUSEL DE PROMOCIONES -->
-  <section class="hero-carousel-section" style="padding-top: 3.5rem;">
-    <div id="heroCarousel" class="carousel slide carousel-fade shadow-lg" data-bs-ride="carousel" data-bs-interval="5000">
-      
-      <!-- Indicadores -->
-      <div class="carousel-indicators">
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
-        <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
-      </div>
-
-      <!-- Slides -->
-      <div class="carousel-inner">
-        
-        <!-- Slide 1 -->
-        <div class="carousel-item active slide-bg-1">
-          <div class="container d-flex flex-column justify-content-center align-items-start text-start py-5" style="min-height: 480px;">
-            <span class="badge bg-danger text-uppercase px-3 py-2 mb-3 fw-bold rounded-pill">Box de CrossFit · Chosica</span>
-            <h1 class="display-4 fw-bold text-white mb-3" style="font-family: var(--font-titulo);">ENTRENA COMO <span class="text-danger">GUERRERO</span></h1>
-            <p class="lead text-light mb-4" style="max-width: 600px;">Halterofilia, atletismo y gimnástico en clases de 1 hora, con grupos reducidos y un coach por turno.</p>
-            <div class="d-flex gap-3 flex-wrap">
-              <button class="btn btn-ic-primary btn-lg" data-bs-toggle="modal" data-bs-target="#modalReserva">Reserva tu clase</button>
-              <a href="planes.html" class="btn btn-ic-outline btn-lg">Ver Planes</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 2 -->
-        <div class="carousel-item slide-bg-2">
-          <div class="container d-flex flex-column justify-content-center align-items-start text-start py-5" style="min-height: 480px;">
-            <span class="badge bg-warning text-dark text-uppercase px-3 py-2 mb-3 fw-bold rounded-pill">🔥 Oferta Limitada</span>
-            <h1 class="display-4 fw-bold text-white mb-3" style="font-family: var(--font-titulo);"><span class="text-warning">50% DESCUENTO</span> EN TU MES</h1>
-            <p class="lead text-light mb-4" style="max-width: 600px;">Matrícula gratis adquiriendo cualquiera de nuestros planes trimestrales o anuales hoy mismo.</p>
-            <div class="d-flex gap-3 flex-wrap">
-              <a href="planes.html" class="btn btn-warning text-dark fw-bold btn-lg text-uppercase">¡Lo quiero ya!</a>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="carousel-item slide-bg-3">
-          <div class="container d-flex flex-column justify-content-center align-items-start text-start py-5" style="min-height: 480px;">
-            <span class="badge bg-danger text-uppercase px-3 py-2 mb-3 fw-bold rounded-pill">Comunidad Imperium</span>
-            <h1 class="display-4 fw-bold text-white mb-3" style="font-family: var(--font-titulo);">MÁS QUE UN <span class="text-danger">BOX</span></h1>
-            <p class="lead text-light mb-4" style="max-width: 600px;">Equipamiento profesional, competencias internas y una comunidad que te empuja a superar tus límites.</p>
-            <div class="d-flex gap-3 flex-wrap">
-              <button class="btn btn-ic-outline btn-lg" data-bs-toggle="modal" data-bs-target="#modalReserva">Únete ahora</button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Flechas de navegación -->
-      <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon bg-dark rounded-circle p-3 shadow" aria-hidden="true"></span>
-        <span class="visually-hidden">Anterior</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
-        <span class="carousel-control-next-icon bg-dark rounded-circle p-3 shadow" aria-hidden="true"></span>
-        <span class="visually-hidden">Siguiente</span>
-      </button>
-
-    </div>
-  </section>
-
-  <!-- SECCIÓN: CONOCE NUESTRO BOX (INSTALACIONES) -->
-  <section class="py-5 bg-dark border-top border-bottom border-secondary border-opacity-25">
-    <div class="container py-4">
-      <div class="text-center mb-5">
-        <p class="eyebrow text-warning">Instalaciones Oficiales</p>
-        <h2 class="display-6 fw-bold text-uppercase text-white" style="font-family: var(--font-titulo);">CONOCE NUESTRO <span class="text-warning">BOX EN CHOSICA</span></h2>
-        <p class="text-secondary">Espacios diseñados y equipados para que entrenes con comodidad, seguridad y el mejor ambiente.</p>
-      </div>
-
-      <!-- Grilla Breve de Instalaciones -->
+  <!-- FOOTER -->
+  <footer class="footer-ic">
+    <div class="container">
       <div class="row g-4">
-        
-        <!-- Zona de Espera -->
-        <div class="col-md-6 col-lg-3">
-          <div class="card bg-black border border-secondary border-opacity-25 h-100 shadow-sm">
-            <div style="height: 180px; overflow: hidden;">
-              <img src="img/espera.jpg" alt="Zona de Espera" style="width:100%; height:100%; object-fit:cover;">
-            </div>
-            <div class="card-body p-3">
-              <h5 class="fw-bold text-white fs-6 mb-1"><i class="bi bi-people-fill text-warning me-2"></i>Zona de Espera</h5>
-              <p class="text-secondary small mb-0">Un espacio cómodo para recibir a la comunidad antes de cada WOD.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Zona de Nutrición -->
-        <div class="col-md-6 col-lg-3">
-          <div class="card bg-black border border-secondary border-opacity-25 h-100 shadow-sm">
-            <div style="height: 180px; overflow: hidden;">
-              <img src="img/nutricion.jpg" alt="Zona de Nutrición" style="width:100%; height:100%; object-fit:cover;">
-            </div>
-            <div class="card-body p-3">
-              <h5 class="fw-bold text-white fs-6 mb-1"><i class="bi bi-heart-pulse-fill text-warning me-2"></i>Zona de Nutrición</h5>
-              <p class="text-secondary small mb-0">Asesoría profesional personalizada para potenciar tu rendimiento físico.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Zona de Materiales -->
-        <div class="col-md-6 col-lg-3">
-          <div class="card bg-black border border-secondary border-opacity-25 h-100 shadow-sm">
-            <div style="height: 180px; overflow: hidden;">
-              <img src="img/materiales.jpg" alt="Zona de Materiales" style="width:100%; height:100%; object-fit:cover;">
-            </div>
-            <div class="card-body p-3">
-              <h5 class="fw-bold text-white fs-6 mb-1"><i class="bi bi-box-seam-fill text-warning me-2"></i>Zona de Materiales</h5>
-              <p class="text-secondary small mb-0">Mancuernas, kettlebells y accesorios ordenados para optimizar tu tiempo.</p>
-            </div>
-          </div>
-        </div>
-
-        <!-- Zona de Máquinas -->
-        <div class="col-md-6 col-lg-3">
-          <div class="card bg-black border border-secondary border-opacity-25 h-100 shadow-sm">
-            <div style="height: 180px; overflow: hidden;">
-              <img src="img/maquinas.jpg" alt="Zona de Máquinas" style="width:100%; height:100%; object-fit:cover;">
-            </div>
-            <div class="card-body p-3">
-              <h5 class="fw-bold text-white fs-6 mb-1"><i class="bi bi-speedometer2 text-warning me-2"></i>Zona de Máquinas</h5>
-              <p class="text-secondary small mb-0">Remos Concept2 y caminadoras para tus entrenamientos metabólicos.</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- DISCIPLINAS -->
-  <section class="section-dark">
-    <div class="container">
-      <p class="eyebrow text-center">Lo que entrenamos</p>
-      <h2 class="text-center mb-4">NUESTRAS DISCIPLINAS</h2>
-      <ul class="nav nav-tabs disc-tabs justify-content-center border-0 mb-4">
-        <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#pane-halterofilia">Halterofilia</button></li>
-        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#pane-atletismo">Atletismo</button></li>
-        <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#pane-gimnastico">Gimnástico</button></li>
-      </ul>
-      <div class="tab-content text-center">
-        <div class="tab-pane fade show active" id="pane-halterofilia">
-          <p>Levantamientos olímpicos (arranque y envión): técnica, fuerza y potencia.</p>
-        </div>
-        <div class="tab-pane fade" id="pane-atletismo">
-          <p>Velocidad, resistencia y capacidad cardiovascular.</p>
-        </div>
-        <div class="tab-pane fade" id="pane-gimnastico">
-          <p>Control corporal, movilidad y fuerza: dominadas, muscle-ups y más.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- INFORMACIÓN DEL GIMNASIO -->
-  <section id="informacion">
-    <div class="container">
-      <p class="eyebrow">Conócenos</p>
-      <h2 class="mb-3">INFORMACIÓN DEL GIMNASIO</h2>
-      <p style="max-width:640px;">
-        Imperium Cross es un box de <strong>CrossFit</strong> en Chosica: clases de
-        <strong>60 min</strong>, <strong>~15 atletas</strong> y <strong>1 coach</strong> por
-        turno, combinando halterofilia, atletismo y gimnástico.
-      </p>
-
-      <h3 class="h5 mt-4 mb-2">Disciplina del día</h3>
-      <div class="aviso-ref mb-3"><i class="bi bi-info-circle me-1"></i> Calendario <strong>referencial</strong>, horarios pendientes de confirmar.</div>
-      <div class="table-responsive">
-        <table class="table table-ic align-middle">
-          <thead><tr><th>Día</th><th>Disciplina</th><th>Aforo</th></tr></thead>
-          <tbody>
-            <tr><th>Lunes</th><td><span class="badge badge-halterofilia">Halterofilia</span></td><td>15</td></tr>
-            <tr><th>Martes</th><td><span class="badge badge-atletismo">Atletismo</span></td><td>15</td></tr>
-            <tr><th>Miércoles</th><td><span class="badge badge-gimnastico">Gimnástico</span></td><td>15</td></tr>
-            <tr><th>Jueves</th><td><span class="badge badge-halterofilia">Halterofilia</span></td><td>15</td></tr>
-            <tr><th>Viernes</th><td><span class="badge badge-atletismo">Atletismo</span></td><td>15</td></tr>
-            <tr><th>Sábado</th><td><span class="badge badge-gimnastico">Gimnástico</span></td><td>15</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3 class="h5 mt-4 mb-2">Preguntas frecuentes</h3>
-      <div class="accordion accordion-ic" id="faqAccordion">
-        <div class="accordion-item">
-          <h4 class="accordion-header"><button class="accordion-button" data-bs-toggle="collapse" data-bs-target="#faq1">¿Necesito experiencia previa?</button></h4>
-          <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion"><div class="accordion-body">No, el coach adapta la carga a tu nivel.</div></div>
-        </div>
-        <div class="accordion-item">
-          <h4 class="accordion-header"><button class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#faq2">¿Dónde veo planes y precios?</button></h4>
-          <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion"><div class="accordion-body">En la sección <a href="planes.html">Planes e inscripción</a>.</div></div>
-        </div>
-      </div>
-      <p class="text-secondary small mt-3 mb-0"><i class="bi bi-geo-alt-fill me-1"></i>Chosica, Lurigancho-Chosica, Lima</p>
-    </div>
-  </section>
-
-  <!-- UBICACIÓN DEL BOX -->
-  <section class="section-dark py-5">
-    <div class="container">
-      <p class="eyebrow text-center">Ubicación Oficial</p>
-      <h2 class="text-center mb-5">NUESTRO BOX</h2>
-      <div class="row justify-content-center">
         <div class="col-md-6">
-          <div class="card bg-black text-white border-secondary h-100 shadow">
-            <img src="img/img-carrusel3.jpg" class="card-img-top" alt="Imperium Cross Chosica" style="height: 220px; object-fit: cover;">
-            <div class="card-body d-flex flex-column text-center">
-              <h5 class="card-title text-warning fw-bold">Imperium Cross - Chosica</h5>
-              <p class="card-text small text-secondary mb-3"><i class="bi bi-geo-alt-fill me-1"></i>Av. 28 de Julio 581, Chosica, Perú</p>
-              <a href="contacto.html" class="btn btn-ic-gold mt-auto text-uppercase fw-bold">Contáctanos</a>
-            </div>
+          <div class="d-flex align-items-center gap-2 mb-2">
+            <img src="img/logo.png" alt="Logo" style="height:36px;width:36px;border-radius:50%;">
+            <span class="text-white titulo">IMPERIUM CROSS</span>
           </div>
+          <p class="small">Box de CrossFit en Chosica.</p>
+        </div>
+        <div class="col-md-6">
+          <h6>Ubicación</h6>
+          <p class="small mb-0"><i class="bi bi-geo-alt-fill me-1"></i>Chosica, Lima</p>
         </div>
       </div>
+      <hr>
+      <p class="small text-center mb-0">© 2026 Imperium Cross · Proyecto académico IMPERIUM CROSS</p>
     </div>
-  </section>
+  </footer>
 
-  <!-- CTA FINAL -->
-  <section class="text-center py-5" style="background-color: #111;">
-    <div class="container">
-      <h2 class="mb-3 text-white">¿LISTO PARA TU PRIMER WOD?</h2>
-      <button class="btn btn-ic-gold btn-lg" data-bs-toggle="modal" data-bs-target="#modalReserva">Reserva tu clase gratis</button>
-    </div>
-  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/main.js"></script>
 
-</main>
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/51907100926?text=Hola,%20quisiera%20más%20información%20sobre%20los%20servicios%20de%20Imperium%20Cross"
+    class="whatsapp-float" target="_blank" 
+    rel="noopener noreferrer" 
+    title="Contáctanos por WhatsApp">
+    <i class="bi bi-whatsapp"></i>
+  </a>
 
-<!-- MODAL: formulario de reserva -->
-<div class="modal fade" id="modalReserva" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header" style="background:var(--ic-black);">
-        <h5 class="modal-title text-white">Reserva tu clase</h5>
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <div id="reservaConfirmacion" class="alert alert-success d-none"></div>
-        <form id="formReserva" class="form-ic needs-validation" novalidate>
-          <div class="mb-3">
-            <label for="nombreReserva" class="form-label">Nombre completo</label>
-            <input type="text" class="form-control" id="nombreReserva" required minlength="3" placeholder="Ej. Ana Torres">
-            <div class="invalid-feedback">Ingresa tu nombre (mínimo 3 caracteres).</div>
-          </div>
-          <div class="mb-3">
-            <label for="whatsappReserva" class="form-label">WhatsApp</label>
-            <input type="tel" class="form-control" id="whatsappReserva" required pattern="9[0-9]{8}" placeholder="9XXXXXXXX">
-            <div class="invalid-feedback">Ingresa un número peruano válido (9 dígitos).</div>
-          </div>
-          <div class="mb-2">
-            <label for="turnoReserva" class="form-label">Turno de interés</label>
-            <select class="form-select" id="turnoReserva" required>
-              <option value="" selected disabled>Selecciona un turno</option>
-              <option value="manana">Turno mañana</option>
-              <option value="mediodia">Turno mediodía</option>
-              <option value="tarde">Turno tarde</option>
-              <option value="noche">Turno noche</option>
-            </select>
-            <div class="invalid-feedback">Selecciona un turno.</div>
-          </div>
-          <p class="cupos-indicador small mb-3" id="cuposIndicador"></p>
-          <button type="submit" class="btn btn-ic-primary w-100">Confirmar preinscripción</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- FOOTER -->
-<footer class="footer-ic">
-  <div class="container">
-    <div class="row g-4">
-      <div class="col-md-6">
-        <div class="d-flex align-items-center gap-2 mb-2">
-          <img src="img/logo.png" alt="Logo" style="height:36px;width:36px;border-radius:50%;">
-          <span class="text-white titulo">IMPERIUM CROSS</span>
-        </div>
-        <p class="small">Box de CrossFit en Chosica.</p>
-      </div>
-      <div class="col-md-6">
-        <h6>Ubicación</h6>
-        <p class="small mb-0"><i class="bi bi-geo-alt-fill me-1"></i>Chosica, Lima</p>
-      </div>
-    </div>
-    <hr>
-    <p class="small text-center mb-0">© 2026 Imperium Cross · Proyecto académico IMPERIUM CROSS</p>
-  </div>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/main.js"></script>
 </body>
+
 </html>

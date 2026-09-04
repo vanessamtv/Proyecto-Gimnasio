@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Entrenamiento y Horarios | Imperium Cross - Chosica</title>
+<link rel="icon" href="img/logo.png">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow:wght@400;600;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<!-- Archivo CSS principal del proyecto -->
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  .entrenamiento-bg {
+    background-color: #111111;
+    min-height: 100vh;
+  }
+  .feature-card {
+    background-color: #1a1a1a !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    height: 100%;
+  }
+  .feature-card:hover {
+    transform: translateY(-5px);
+    border-color: #ffc107 !important;
+  }
+  .img-box-container {
+    height: 240px;
+    overflow: hidden;
+    border-top-left-radius: 0.375rem;
+    border-top-right-radius: 0.375rem;
+  }
+  .img-box-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .feature-card:hover .img-box-container img {
+    transform: scale(1.05);
+  }
+  .horario-table {
+    background-color: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .horario-table th {
+    background-color: #222;
+    color: #ffc107;
+    border-bottom: 2px solid #ffc107;
+  }
+  .horario-table td {
+    color: #cccccc;
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+</style>
+</head>
+<body class="bg-dark text-white">
+
+<!-- NAVBAR -->
+<header>
+  <nav class="navbar navbar-expand-lg navbar-ic shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="img/logo.png" alt="Logo Imperium Cross">
+        <span>IMPERIUM <em>CROSS</em></span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navMain">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Inicio</a></li>
+          <li class="nav-item"><a class="nav-link" href="planes.html">Planes</a></li>
+          <li class="nav-item"><a class="nav-link active" href="entrenamiento.html">Entrenamiento</a></li>
+          <li class="nav-item"><a class="nav-link" href="tienda.html">Tienda</a></li>
+          <li class="nav-item"><a class="nav-link" href="contacto.html">Contacto</a></li>
+        </ul>
+        <button class="btn btn-ic-gold ms-lg-3 mt-3 mt-lg-0" data-bs-toggle="modal" data-bs-target="#modalReserva">Reserva tu clase</button>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="entrenamiento-bg py-5">
+  <div class="container py-4">
+    
+    <!-- Encabezado -->
+    <div class="text-center mb-5">
+      <p class="eyebrow text-warning">Metodología & Zonas</p>
+      <h1 class="display-5 fw-bold text-uppercase text-white" style="font-family: var(--font-titulo);">CÓMO <span class="text-warning">ENTRENAMOS</span></h1>
+      <p class="text-secondary">Constancia, disciplina y el mejor equipamiento en Chosica para llevar tu cuerpo al siguiente nivel.</p>
+    </div>
+
+    <!-- Zonas del Box (Basado en las fotos reales) -->
+    <div class="row g-4 mb-5">
+      
+      <!-- Zona de Máquinas -->
+      <div class="col-md-4">
+        <div class="card feature-card rounded shadow">
+          <div class="img-box-container">
+            <img src="img/maquinas.jpg" alt="Zona de Máquinas Imperium">
+          </div>
+          <div class="card-body p-4 d-flex flex-column">
+            <h4 class="fw-bold text-white mb-3">Zona de Máquinas</h4>
+            <p class="text-secondary small mb-3">Equipamiento de alto rendimiento para trabajos cardiovasculares y metabólicos intensos (WODs de remo y carrera).</p>
+            <ul class="list-unstyled text-secondary small mb-0">
+              <li><i class="bi bi-check2 text-warning me-2"></i>Remos Concept2</li>
+              <li><i class="bi bi-check2 text-warning me-2"></i>Caminadoras AssaultRunner</li>
+              <li><i class="bi bi-check2 text-warning me-2"></i>Bicicletas de Asalto y Poleas</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zona de Materiales -->
+      <div class="col-md-4">
+        <div class="card feature-card rounded shadow">
+          <div class="img-box-container">
+            <img src="img/materiales.jpg" alt="Zona de Materiales Imperium">
+          </div>
+          <div class="card-body p-4 d-flex flex-column">
+            <h4 class="fw-bold text-white mb-3">Zona de Materiales</h4>
+            <p class="text-secondary small mb-3">Todo lo necesario para halterofilia, fuerza pura y accesorios de protección personal.</p>
+            <ul class="list-unstyled text-secondary small mb-0">
+              <li><i class="bi bi-check2 text-warning me-2"></i>Mancuernas hexagonales y Kettlebells</li>
+              <li><i class="bi bi-check2 text-warning me-2"></i>Discos bumper y barras olímpicas</li>
+              <li><i class="bi bi-check2 text-warning me-2"></i>Colchonetas, AbMats y Wall Balls</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Zona de Entrenamiento / WOD -->
+      <div class="col-md-4">
+        <div class="card feature-card rounded shadow">
+          <div class="img-box-container">
+            <img src="img/entrenamiento.jpg" alt="Zona de Entrenamiento Grupal">
+          </div>
+          <div class="card-body p-4 d-flex flex-column">
+            <h4 class="fw-bold text-white mb-3">Zona de Entrenamiento</h4>
+            <p class="text-secondary small mb-3">Espacio amplio con piso técnico de alta resistencia y estructura para gimnasia y barras.</p>
+            <ul class="list-unstyled text-secondary small mb-0">
+              <li><i class="bi bi-check2 text-warning me-2"></i>Clases grupales guiadas por coaches</li>
+              <li><i class="bi bi-check2 text-warning me-2"></i>Estructura de dominadas y anillas</li>
+              <li><i class="bi bi-check2 text-warning me-2"></i>Pizarra de planificación diaria</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Horarios Oficiales (Basado en la pizarra de la foto) -->
+    <div class="row justify-content-center mt-5">
+      <div class="col-lg-8">
+        <div class="text-center mb-4">
+          <h3 class="fw-bold text-uppercase" style="font-family: var(--font-titulo);">NUESTROS <span class="text-warning">HORARIOS</span></h3>
+          <p class="text-secondary">Elige el turno que mejor se adapte a tu rutina diaria.</p>
+        </div>
+
+        <div class="table-responsive rounded shadow">
+          <table class="table table-dark horario-table align-middle text-center mb-0">
+            <thead>
+              <tr>
+                <th class="py-3">Turno / Horario</th>
+                <th class="py-3">Días</th>
+                <th class="py-3">Tipo de Sesión</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>07:30 AM – 08:30 AM</strong></td>
+                <td>Lunes a Viernes</td>
+                <td><span class="badge bg-warning text-dark">Clase WOD Matutino</span></td>
+              </tr>
+              <tr>
+                <td><strong>08:30 AM – 09:30 AM</strong></td>
+                <td>Lunes a Viernes</td>
+                <td><span class="badge bg-warning text-dark">Clase WOD Matutino</span></td>
+              </tr>
+              <tr>
+                <td><strong>09:30 AM – 10:30 AM</strong></td>
+                <td>Lunes a Viernes</td>
+                <td><span class="badge bg-warning text-dark">Clase WOD Matutino</span></td>
+              </tr>
+              <tr class="table-active">
+                <td><strong>10:30 AM – 12:00 PM</strong></td>
+                <td>Lunes a Viernes</td>
+                <td><span class="badge bg-secondary text-white">OPEN BOX (Libre)</span></td>
+              </tr>
+              <tr>
+                <td><strong>05:00 PM – 06:00 PM</strong></td>
+                <td>Lunes a Viernes</td>
+                <td><span class="badge bg-warning text-dark">Clase WOD Tarde</span></td>
+              </tr>
+              <tr>
+                <td><strong>06:00 PM – 07:00 PM</strong></td>
+                <td>Lunes a Viernes</td>
+                <td><span class="badge bg-warning text-dark">Clase WOD Tarde</span></td>
+              </tr>
+              <tr>
+                <td><strong>07:00 PM – 08:00 PM</strong></td>
+                <td>Lunes a Viernes</td>
+                <td><span class="badge bg-warning text-dark">Clase WOD Tarde</span></td>
+              </tr>
+              <tr>
+                <td><strong>08:00 PM – 09:00 PM</strong></td>
+                <td>Lunes a Viernes</td>
+                <td><span class="badge bg-warning text-dark">Clase WOD Noche</span></td>
+              </tr>
+              <tr>
+                <td><strong>09:00 PM – 10:00 PM</strong></td>
+                <td>Lunes a Viernes</td>
+                <td><span class="badge bg-warning text-dark">Clase WOD Noche</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer-ic">
+  <div class="container py-4">
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <img src="img/logo.png" alt="Logo" style="height:36px;width:36px;border-radius:50%;">
+          <span class="text-white titulo">IMPERIUM CROSS</span>
+        </div>
+        <p class="small text-secondary">Box de CrossFit en Chosica.</p>
+      </div>
+      <div class="col-md-6 text-md-end">
+        <h6>Ubicación</h6>
+        <p class="small text-secondary mb-0"><i class="bi bi-geo-alt-fill me-1"></i>Av. 28 de Julio 581, Chosica, Lima</p>
+      </div>
+    </div>
+    <hr class="border-secondary">
+    <p class="small text-center text-secondary mb-0">© 2026 Imperium Cross · Proyecto académico FITZONE</p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

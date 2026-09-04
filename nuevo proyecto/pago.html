@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pago | Imperium Cross</title>
+
+    <link rel="icon" href="img/logo.png">
+    <link rel="stylesheet" href="CSS/pago.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <img src="img/logo.png" alt="Imperium Cross">
+        <strong>IMPERIUM <span>CROSS</span></strong>
+    </div>
+
+    <a href="planes.html">← VOLVER A PLANES</a>
+</header>
+
+
+<main class="contenedor">
+
+    <!-- RESUMEN -->
+    <section class="resumen">
+
+        <span class="badge">INSCRIPCIÓN</span>
+
+        <h1>
+            ESTÁS A UN PASO DE
+            <span>ENTRENAR</span>
+        </h1>
+
+        <p>Completa tus datos para finalizar tu inscripción.</p>
+
+        <div class="resumen-datos">
+
+            <div>
+                <label>Sede</label>
+                <strong id="sede">CHOSICA</strong>
+            </div>
+
+            <div>
+                <label>Plan</label>
+                <strong id="plan">Cargando...</strong>
+            </div>
+
+            <div>
+                <label>Total</label>
+                <strong class="precio" id="precio">S/ 0.00</strong>
+            </div>
+
+        </div>
+
+        <h3>Tu plan incluye</h3>
+
+        <ul class="beneficios">
+            <li>✓ Coach profesional</li>
+            <li>✓ Clases WOD guiadas</li>
+            <li>✓ Uso de equipamiento</li>
+            <li>✓ Acceso al box</li>
+        </ul>
+
+    </section>
+
+
+    <!-- PAGO -->
+    <section class="pago">
+
+        <div class="titulo">
+            <h2>Datos de pago</h2>
+            <span>🔒 PAGO SEGURO</span>
+        </div>
+
+        <label class="label">Selecciona tu método de pago</label>
+
+
+        <!-- MÉTODOS -->
+        <div class="metodos">
+
+            <label>
+                <input type="radio" name="metodo" value="BCP" checked>
+                <div class="metodo">
+                    <b class="visa">VISA</b>
+                    <strong>BCP</strong>
+                </div>
+            </label>
+
+            <label>
+                <input type="radio" name="metodo" value="BBVA">
+                <div class="metodo">
+                    <b class="visa">VISA</b>
+                    <strong>BBVA</strong>
+                </div>
+            </label>
+
+            <label>
+                <input type="radio" name="metodo" value="YAPE">
+                <div class="metodo yape">
+                    <strong>Yape</strong>
+                </div>
+            </label>
+
+            <label>
+                <input type="radio" name="metodo" value="PLIN">
+                <div class="metodo plin">
+                    <strong>Plin</strong>
+                </div>
+            </label>
+
+        </div>
+
+
+        <!-- TARJETA -->
+        <div id="tarjeta" class="tarjeta">
+
+            <div class="tarjeta-top">
+                <div class="chip"></div>
+                <div class="wifi">))))</div>
+            </div>
+
+            <div id="numeroVisual" class="numero">
+                0000 0000 0000 0000
+            </div>
+
+            <div class="tarjeta-bottom">
+
+                <div>
+                    <small>TITULAR</small>
+                    <strong id="nombreVisual">
+                        NOMBRE DEL TITULAR
+                    </strong>
+                </div>
+
+                <div>
+                    <small>EXPIRA</small>
+                    <strong id="fechaVisual">00/00</strong>
+                </div>
+
+                <div id="bancoVisual" class="banco">
+                    VISA <span>BCP</span>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- QR -->
+        <div id="qrPago" class="qr-pago">
+
+            <h3 id="qrTitulo">Paga con Yape</h3>
+
+            <p id="qrTexto">
+                Escanea el código QR utilizando Yape.
+            </p>
+
+            <img src="img/QR.jpeg" alt="QR de pago">
+
+            <p>📱 Escanea el QR con tu aplicación de pago.</p>
+
+            <button type="button" id="btnQR">
+                CONFIRMAR PAGO →
+            </button>
+
+        </div>
+
+
+        <!-- FORMULARIO -->
+        <form id="formPago">
+
+            <div id="datosTarjeta">
+
+                <div class="fila">
+
+                    <div>
+                        <label>Nombre</label>
+                        <input id="nombre" type="text"
+                               placeholder="Tu nombre" required>
+                    </div>
+
+                    <div>
+                        <label>Apellidos</label>
+                        <input id="apellidos" type="text"
+                               placeholder="Tus apellidos" required>
+                    </div>
+
+                </div>
+
+
+                <label>Número de tarjeta</label>
+
+                <input id="numero"
+                       type="text"
+                       maxlength="19"
+                       inputmode="numeric"
+                       placeholder="0000 0000 0000 0000"
+                       required>
+
+
+                <div class="fila">
+
+                    <div>
+                        <label>Expiración</label>
+
+                        <input id="expiracion"
+                               type="text"
+                               maxlength="5"
+                               inputmode="numeric"
+                               placeholder="MM/YY"
+                               required>
+                    </div>
+
+                    <div>
+                        <label>C. de seguridad</label>
+
+                        <input id="cvv"
+                               type="password"
+                               maxlength="4"
+                               inputmode="numeric"
+                               placeholder="CVV"
+                               required>
+                    </div>
+
+                </div>
+
+
+                <div class="fila">
+
+                    <div>
+                        <label>C. Postal <small>(opcional)</small></label>
+                        <input id="postal" type="text"
+                               placeholder="Opcional">
+                    </div>
+
+                    <div>
+                        <label>Teléfono <small>(opcional)</small></label>
+                        <input id="telefono" type="tel"
+                               placeholder="Opcional">
+                    </div>
+
+                </div>
+
+
+                <label>Email</label>
+
+                <input id="email"
+                       type="email"
+                       placeholder="correo@ejemplo.com"
+                       required>
+
+
+                <button type="submit" id="btnPagar">
+                    COMPLETAR PAGO →
+                </button>
+
+            </div>
+
+            <div id="mensaje" class="mensaje">
+                ¡Inscripción realizada con éxito!
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+
+<script>
+
+/* =========================
+   DATOS DEL PLAN
+========================= */
+
+const params = new URLSearchParams(location.search);
+
+const datos = {
+    gym: params.get("gym") || "Chosica",
+    plan: params.get("plan") || "mensual",
+    precio: Number(params.get("precio") || 180)
+};
+
+document.getElementById("sede").textContent =
+    datos.gym.toUpperCase();
+
+document.getElementById("plan").textContent =
+    "PLAN " + datos.plan.toUpperCase();
+
+document.getElementById("precio").textContent =
+    `S/ ${datos.precio.toFixed(2)}`;
+
+
+/* =========================
+   ELEMENTOS
+========================= */
+
+const tarjeta = document.getElementById("tarjeta");
+const datosTarjeta = document.getElementById("datosTarjeta");
+const qrPago = document.getElementById("qrPago");
+
+const nombre = document.getElementById("nombre");
+const apellidos = document.getElementById("apellidos");
+const numero = document.getElementById("numero");
+const expiracion = document.getElementById("expiracion");
+
+
+/* =========================
+   MÉTODO DE PAGO
+========================= */
+
+document.querySelectorAll('[name="metodo"]').forEach(input => {
+
+    input.addEventListener("change", () => {
+
+        const metodo = input.value;
+        const digital = metodo === "YAPE" || metodo === "PLIN";
+
+        tarjeta.style.display = digital ? "none" : "block";
+        datosTarjeta.style.display = digital ? "none" : "block";
+        qrPago.style.display = digital ? "block" : "none";
+
+        if (digital) {
+            document.getElementById("qrTitulo").textContent =
+                `Paga con ${metodo}`;
+
+            document.getElementById("qrTexto").textContent =
+                `Escanea el código QR utilizando ${metodo}.`;
+        }
+
+        /* Los campos de tarjeta dejan de ser obligatorios */
+        [numero, expiracion, document.getElementById("cvv")]
+            .forEach(campo => campo.required = !digital);
+
+    });
+
+});
+
+
+/* =========================
+   TITULAR
+========================= */
+
+function actualizarNombre() {
+
+    const nombreCompleto =
+        `${nombre.value} ${apellidos.value}`.trim();
+
+    document.getElementById("nombreVisual").textContent =
+        nombreCompleto.toUpperCase() || "NOMBRE DEL TITULAR";
+}
+
+nombre.addEventListener("input", actualizarNombre);
+apellidos.addEventListener("input", actualizarNombre);
+
+
+/* =========================
+   TARJETA
+========================= */
+
+numero.addEventListener("input", function () {
+
+    const valor = this.value
+        .replace(/\D/g, "")
+        .slice(0, 16);
+
+    this.value =
+        valor.match(/.{1,4}/g)?.join(" ") || "";
+
+    document.getElementById("numeroVisual").textContent =
+        this.value || "0000 0000 0000 0000";
+});
+
+
+expiracion.addEventListener("input", function () {
+
+    let valor = this.value
+        .replace(/\D/g, "")
+        .slice(0, 4);
+
+    if (valor.length > 2)
+        valor = valor.slice(0, 2) + "/" + valor.slice(2);
+
+    this.value = valor;
+
+    document.getElementById("fechaVisual").textContent =
+        valor || "00/00";
+});
+
+
+document.getElementById("cvv").addEventListener("input", function () {
+    this.value = this.value
+        .replace(/\D/g, "")
+        .slice(0, 4);
+});
+
+
+/* =========================
+   FORMULARIO
+========================= */
+
+document.getElementById("formPago").addEventListener("submit", e => {
+
+    e.preventDefault();
+
+    document.getElementById("mensaje").style.display = "block";
+
+    document.getElementById("btnPagar").textContent =
+        "✓ PAGO COMPLETADO";
+});
+
+
+/* =========================
+   YAPE / PLIN
+========================= */
+
+document.getElementById("btnQR").addEventListener("click", function () {
+
+    this.textContent = "✓ PAGO COMPLETADO";
+    this.disabled = true;
+
+    document.getElementById("mensaje").style.display = "block";
+});
+
+</script>
+
+</body>
+</html>

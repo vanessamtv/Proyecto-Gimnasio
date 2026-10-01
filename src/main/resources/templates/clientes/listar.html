@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Clientes')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav}"></nav>
+<div th:replace="~{fragments :: mensajes}"></div>
+
+<main id="contenido" class="container page">
+    <header class="page-heading">
+        <div>
+            <p class="eyebrow">COMUNIDAD / CLIENTES</p>
+            <h1>Tu comunidad, en un solo lugar.</h1>
+            <p class="muted">
+                Registra clientes, consulta sus datos y administra su estado.
+            </p>
+        </div>
+
+        <a th:href="@{/clientes/nuevo}" class="btn primary">
+            + Nuevo cliente
+        </a>
+    </header>
+
+    <section class="card">
+        <div class="toolbar">
+            <div>
+                <h2>Directorio de clientes</h2>
+                <span class="muted"
+                      th:text="${#lists.size(clientes)} + ' clientes en esta vista'">
+                </span>
+            </div>
+
+            <form th:action="@{/clientes}" method="get" class="search">
+                <label for="q" class="sr-only">
+                    Buscar por nombre o apellido
+                </label>
+                <input id="q" type="search" name="q"
+                       th:value="${q}" placeholder="Nombre o apellido…">
+
+                <button type="submit" class="btn secondary">Buscar</button>
+
+                <a th:if="${q != null and !#strings.isEmpty(q)}"
+                   th:href="@{/clientes}" class="btn ghost">
+                    Limpiar
+                </a>
+            </form>
+        </div>
+
+        <div class="table-wrap" role="region"
+             aria-label="Lista de clientes" tabindex="0">
+            <table>
+                <thead>
+                <tr>
+                    <th>DNI</th>
+                    <th>Cliente</th>
+                    <th>Contacto</th>
+                    <th>Edad</th>
+                    <th>Estado</th>
+                    <th class="right">Acciones</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="c : ${clientes}">
+                    <td class="mono" th:text="${c.dni}"></td>
+
+                    <td>
+                        <a class="name-link"
+                           th:href="@{/clientes/{id}(id=${c.id})}"
+                           th:text="${c.nombreCompleto}">
+                        </a>
+                    </td>
+
+                    <td>
+                        <span th:text="${c.email}"></span>
+                        <small class="cell-sub" th:text="${c.telefono}"></small>
+                    </td>
+
+                    <td th:text="${c.edad} + ' años'"></td>
+
+                    <td>
+                        <span th:if="${c.activo}" class="badge success">
+                            Activo
+                        </span>
+                        <span th:unless="${c.activo}" class="badge neutral">
+                            De baja
+                        </span>
+                    </td>
+
+                    <td>
+                        <div class="actions end nowrap">
+                            <a class="btn small secondary"
+                               th:href="@{/clientes/{id}(id=${c.id})}">
+                                Ver
+                            </a>
+
+                            <a class="btn small secondary"
+                               th:href="@{/clientes/{id}/editar(id=${c.id})}">
+                                Editar
+                            </a>
+
+                            <form th:if="${c.activo}"
+                                  th:action="@{/clientes/{id}/baja(id=${c.id})}"
+                                  method="post"
+                                  onsubmit="return confirm('¿Dar de baja a este cliente?');">
+                                <button type="submit" class="btn small danger">
+                                    Dar de baja
+                                </button>
+                            </form>
+
+                            <form th:unless="${c.activo}"
+                                  th:action="@{/clientes/{id}/reactivar(id=${c.id})}"
+                                  method="post">
+                                <button type="submit" class="btn small secondary">
+                                    Reactivar
+                                </button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+
+                <tr th:if="${#lists.isEmpty(clientes)}">
+                    <td colspan="6" class="empty">
+                        <strong>No hay clientes para mostrar.</strong>
+                        <span>
+                            Registra un nuevo cliente o prueba con otra búsqueda.
+                        </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

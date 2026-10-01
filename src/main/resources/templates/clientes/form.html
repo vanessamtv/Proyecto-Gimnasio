@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Registro de cliente')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav}"></nav>
+<div th:replace="~{fragments :: mensajes}"></div>
+
+<main id="contenido" class="container page">
+    <a class="back-link" th:href="@{/clientes}">← Volver a clientes</a>
+
+    <header class="page-heading">
+        <div>
+            <p class="eyebrow">COMUNIDAD / REGISTRO</p>
+            <h1 th:text="${cliente.id == null}
+                         ? 'Todo empieza aquí.'
+                         : 'Actualiza su información.'">
+            </h1>
+            <p class="muted">Completa los datos del cliente para continuar.</p>
+        </div>
+    </header>
+
+    <div class="form-layout">
+        <aside class="form-aside">
+            <p class="eyebrow">IMPERIUM CROSS</p>
+            <h2>Más que un box.<br>Una comunidad.</h2>
+            <p>
+                Cada cliente tiene una historia. Mantén sus datos
+                actualizados y acompaña su progreso.
+            </p>
+            <div class="aside-note">
+                <span>01 / DATOS PERSONALES</span>
+                <span>02 / INFORMACIÓN DE CONTACTO</span>
+            </div>
+        </aside>
+
+        <form th:action="@{/clientes/guardar}" th:object="${cliente}"
+              method="post" class="card form-card">
+            <input type="hidden" th:field="*{id}">
+
+            <div class="form-heading">
+                <h2 th:text="${cliente.id == null} ? 'Nuevo cliente' : 'Editar cliente'"></h2>
+                <p class="muted">Los campos con * son obligatorios.</p>
+            </div>
+
+            <div class="form-grid">
+                <div class="field">
+                    <label for="nombres">Nombres <span>*</span></label>
+                    <input id="nombres" type="text" th:field="*{nombres}"
+                           autocomplete="given-name" maxlength="80"
+                           placeholder="Ej. Diego" required
+                           th:classappend="${#fields.hasErrors('nombres')} ? 'invalid'"
+                           aria-describedby="nombres-error">
+                    <small id="nombres-error" class="field-error"
+                           th:if="${#fields.hasErrors('nombres')}"
+                           th:errors="*{nombres}"></small>
+                </div>
+
+                <div class="field">
+                    <label for="apellidos">Apellidos <span>*</span></label>
+                    <input id="apellidos" type="text" th:field="*{apellidos}"
+                           autocomplete="family-name" maxlength="80"
+                           placeholder="Ej. Quiñones" required
+                           th:classappend="${#fields.hasErrors('apellidos')} ? 'invalid'"
+                           aria-describedby="apellidos-error">
+                    <small id="apellidos-error" class="field-error"
+                           th:if="${#fields.hasErrors('apellidos')}"
+                           th:errors="*{apellidos}"></small>
+                </div>
+
+                <div class="field">
+                    <label for="dni">DNI <span>*</span></label>
+                    <input id="dni" type="text" th:field="*{dni}"
+                           inputmode="numeric" pattern="[0-9]{8}"
+                           minlength="8" maxlength="8"
+                           placeholder="8 dígitos" required
+                           th:classappend="${#fields.hasErrors('dni')} ? 'invalid'"
+                           aria-describedby="dni-error">
+                    <small id="dni-error" class="field-error"
+                           th:if="${#fields.hasErrors('dni')}"
+                           th:errors="*{dni}"></small>
+                </div>
+
+                <div class="field">
+                    <label for="fechaNacimiento">Fecha de nacimiento <span>*</span></label>
+                    <input id="fechaNacimiento" type="date"
+                           th:field="*{fechaNacimiento}"
+                           autocomplete="bday" required
+                           th:classappend="${#fields.hasErrors('fechaNacimiento')} ? 'invalid'"
+                           aria-describedby="fechaNacimiento-error">
+                    <small id="fechaNacimiento-error" class="field-error"
+                           th:if="${#fields.hasErrors('fechaNacimiento')}"
+                           th:errors="*{fechaNacimiento}"></small>
+                </div>
+
+                <div class="field">
+                    <label for="email">Correo electrónico <span>*</span></label>
+                    <input id="email" type="email" th:field="*{email}"
+                           autocomplete="email" placeholder="nombre@correo.com" required
+                           th:classappend="${#fields.hasErrors('email')} ? 'invalid'"
+                           aria-describedby="email-error">
+                    <small id="email-error" class="field-error"
+                           th:if="${#fields.hasErrors('email')}"
+                           th:errors="*{email}"></small>
+                </div>
+
+                <div class="field">
+                    <label for="telefono">Teléfono <span>*</span></label>
+                    <input id="telefono" type="tel" th:field="*{telefono}"
+                           autocomplete="tel" inputmode="numeric"
+                           pattern="[0-9]{9}" minlength="9" maxlength="9"
+                           placeholder="9 dígitos" required
+                           th:classappend="${#fields.hasErrors('telefono')} ? 'invalid'"
+                           aria-describedby="telefono-error">
+                    <small id="telefono-error" class="field-error"
+                           th:if="${#fields.hasErrors('telefono')}"
+                           th:errors="*{telefono}"></small>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <a th:href="@{/clientes}" class="btn secondary">Cancelar</a>
+                <button type="submit" class="btn primary">Guardar cliente →</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

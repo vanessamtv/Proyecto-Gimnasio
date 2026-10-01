@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Membresías')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav}"></nav>
+<div th:replace="~{fragments :: mensajes}"></div>
+
+<main id="contenido" class="container page">
+    <header class="page-heading">
+        <div>
+            <p class="eyebrow">PLANES / MEMBRESÍAS</p>
+            <h1>Gestiona las membresías.</h1>
+            <p class="muted">
+                Consulta los planes, precios y fechas de vencimiento.
+            </p>
+        </div>
+        <a th:href="@{/membresias/nueva}" class="btn primary">
+            + Nueva membresía
+        </a>
+    </header>
+
+    <section class="card">
+        <div class="toolbar">
+            <div>
+                <h2>Membresías registradas</h2>
+                <span class="muted"
+                      th:text="${#lists.size(membresias)} + ' registros'"></span>
+            </div>
+            <span class="badge neutral">Historial de planes</span>
+        </div>
+
+        <div class="table-wrap" role="region"
+             aria-label="Lista de membresías" tabindex="0">
+            <table>
+                <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Plan</th>
+                    <th>Local</th>
+                    <th>Inicio</th>
+                    <th>Vencimiento</th>
+                    <th>Precio</th>
+                    <th>Estado</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="m : ${membresias}">
+                    <td>
+                        <a class="name-link"
+                           th:href="@{/clientes/{id}(id=${m.cliente.id})}"
+                           th:text="${m.cliente.nombreCompleto}"></a>
+                    </td>
+                    <td>
+                        <span class="plan-chip" th:text="${m.tipoPlan}"></span>
+                    </td>
+                    <td th:text="${m.gimnasio}"></td>
+                    <td class="mono" th:text="${m.fechaInicio}"></td>
+                    <td class="mono" th:text="${m.fechaFin}"></td>
+                    <td class="price" th:text="'S/ ' + ${m.precio}"></td>
+                    <td th:switch="${m.estado.name()}">
+                        <span th:case="'ACTIVA'" class="badge success">
+                            Activa
+                        </span>
+                        <span th:case="'VENCIDA'" class="badge warning">
+                            Vencida
+                        </span>
+                        <span th:case="*" class="badge neutral">
+                            Cancelada
+                        </span>
+                    </td>
+                </tr>
+
+                <tr th:if="${#lists.isEmpty(membresias)}">
+                    <td colspan="7" class="empty">
+                        <strong>Aún no hay membresías registradas.</strong>
+                        <span>
+                            Haz clic en “Nueva membresía” para inscribir un cliente.
+                        </span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

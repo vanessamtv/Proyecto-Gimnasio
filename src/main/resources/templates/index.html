@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Inicio')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav}"></nav>
+<div th:replace="~{fragments :: mensajes}"></div>
+
+<main id="contenido" class="container page">
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="eyebrow">IMPERIUM CROSS / PANEL DE GESTIÓN</p>
+            <h1>Un nuevo nivel.<br><span>El mismo impulso.</span></h1>
+            <p>Tu comunidad, tus planes y cada entrenamiento, bajo control desde un solo lugar.</p>
+            <div class="actions">
+                <a th:href="@{/clientes/nuevo}" class="btn primary">+ Nuevo cliente</a>
+                <a th:href="@{/asistencias}" class="btn light">Registrar asistencia ↗</a>
+            </div>
+        </div>
+        <div class="hero-tag">FUERZA · CONSTANCIA · COMUNIDAD</div>
+    </section>
+
+    <section class="stats" aria-label="Resumen del gimnasio">
+        <a th:href="@{/clientes}" class="stat">
+            <span>Clientes activos</span>
+            <strong th:text="${totalClientes}">0</strong>
+            <small>Tu comunidad ↗</small>
+        </a>
+        <a th:href="@{/membresias}" class="stat">
+            <span>Membresías activas</span>
+            <strong th:text="${membresiasActivas}">0</strong>
+            <small>Consulta los planes ↗</small>
+        </a>
+        <a th:href="@{/asistencias}" class="stat">
+            <span>Asistencias hoy</span>
+            <strong th:text="${asistenciasHoy}">0</strong>
+            <small>Movimiento del día ↗</small>
+        </a>
+        <a th:href="@{/asistencias}" class="stat stat-dark">
+            <span><i class="live-dot"></i> Entrenando ahora</span>
+            <strong th:text="${enCurso}">0</strong>
+            <small>Sesiones en curso ↗</small>
+        </a>
+    </section>
+
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">GESTIÓN ÁGIL</p>
+            <h2>Todo empieza con una acción.</h2>
+        </div>
+    </div>
+    <div class="actions">
+        <a th:href="@{/clientes/nuevo}" class="btn primary">+ Registrar cliente</a>
+        <a th:href="@{/membresias/nueva}" class="btn secondary">Crear membresía →</a>
+        <a th:href="@{/asistencias}" class="btn secondary">Controlar asistencia →</a>
+    </div>
+
+    <div class="section-heading">
+        <div>
+            <p class="eyebrow">TU ESPACIO</p>
+            <h2>Diseñado para superar límites.</h2>
+        </div>
+        <span class="muted">Cuatro zonas. Un mismo propósito.</span>
+    </div>
+
+    <section class="zones" aria-label="Zonas del gimnasio">
+        <article class="zone">
+            <img th:src="@{/img/maquinas.jpg}" alt="Zona de máquinas" loading="lazy">
+            <div><span>01 / FUERZA</span><h3>Supera tus límites.</h3></div>
+        </article>
+        <article class="zone">
+            <img th:src="@{/img/materiales.jpg}" alt="Materiales de entrenamiento" loading="lazy">
+            <div><span>02 / ENTRENAMIENTO</span><h3>Cada repetición cuenta.</h3></div>
+        </article>
+        <article class="zone">
+            <img th:src="@{/img/nutricion.jpg}" alt="Zona de nutrición" loading="lazy">
+            <div><span>03 / NUTRICIÓN</span><h3>Alimenta tu progreso.</h3></div>
+        </article>
+        <article class="zone">
+            <img th:src="@{/img/espera.jpg}" alt="Zona de espera" loading="lazy">
+            <div><span>04 / COMUNIDAD</span><h3>Un espacio para ti.</h3></div>
+        </article>
+    </section>
+
+</main>
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

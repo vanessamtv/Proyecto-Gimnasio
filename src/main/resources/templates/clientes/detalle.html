@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Detalle de cliente')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav}"></nav>
+<div th:replace="~{fragments :: mensajes}"></div>
+
+<main id="contenido" class="container page">
+    <a class="back-link" th:href="@{/clientes}">← Volver a clientes</a>
+
+    <header class="profile card">
+        <div class="profile-main">
+            <span class="avatar large"
+                  th:text="${#strings.substring(cliente.nombres,0,1)}">C</span>
+            <div>
+                <p class="eyebrow">FICHA DEL CLIENTE</p>
+                <h1 th:text="${cliente.nombreCompleto}"></h1>
+                <div class="profile-meta">
+                    <span th:text="'DNI ' + ${cliente.dni}"></span>
+                    <span th:text="${cliente.email}"></span>
+                    <span th:text="${cliente.telefono}"></span>
+                    <span th:text="${cliente.edad} + ' años'"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="actions">
+            <span th:if="${cliente.activo}" class="badge success">Activo</span>
+            <span th:unless="${cliente.activo}" class="badge neutral">De baja</span>
+            <a class="btn secondary"
+               th:href="@{/clientes/{id}/editar(id=${cliente.id})}">Editar perfil</a>
+        </div>
+    </header>
+
+    <section th:if="${membresiaVigente != null}" class="membership-banner">
+        <div>
+            <p class="eyebrow">MEMBRESÍA VIGENTE</p>
+            <h2>Plan <span th:text="${membresiaVigente.tipoPlan}"></span></h2>
+            <p>
+                Local <span th:text="${membresiaVigente.gimnasio}"></span> ·
+                Vence el <span th:text="${membresiaVigente.fechaFin}"></span>
+            </p>
+        </div>
+
+        <div class="days">
+            <strong th:text="${membresiaVigente.diasRestantes}"></strong>
+            <span>días restantes</span>
+        </div>
+    </section>
+
+    <div th:unless="${membresiaVigente != null}"
+         class="alert warning section-gap" role="status">
+        Este cliente no tiene una membresía vigente.
+    </div>
+
+    <section class="card section-gap">
+        <div class="toolbar">
+            <div>
+                <p class="eyebrow">PLANES DEL CLIENTE</p>
+                <h2>Historial de membresías</h2>
+            </div>
+            <a class="btn primary small"
+               th:href="@{/membresias/nueva(clienteId=${cliente.id})}">
+                + Nueva membresía
+            </a>
+        </div>
+
+        <div class="table-wrap" role="region"
+             aria-label="Membresías del cliente" tabindex="0">
+            <table>
+                <thead>
+                <tr>
+                    <th>Plan</th>
+                    <th>Local</th>
+                    <th>Inicio</th>
+                    <th>Fin</th>
+                    <th>Estado</th>
+                    <th class="right">Acciones</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="m : ${membresias}">
+                    <td><span class="plan-chip" th:text="${m.tipoPlan}"></span></td>
+                    <td th:text="${m.gimnasio}"></td>
+                    <td class="mono" th:text="${m.fechaInicio}"></td>
+                    <td class="mono" th:text="${m.fechaFin}"></td>
+
+                    <td th:switch="${m.estado.name()}">
+                        <span th:case="'ACTIVA'" class="badge success">Activa</span>
+                        <span th:case="'VENCIDA'" class="badge warning">Vencida</span>
+                        <span th:case="*" class="badge neutral">Cancelada</span>
+                    </td>
+
+                    <td class="right">
+                        <form th:if="${m.estado.name() == 'ACTIVA'}"
+                              th:action="@{/membresias/{id}/cancelar(id=${m.id})}"
+                              method="post"
+                              onsubmit="return confirm('¿Cancelar esta membresía?');">
+                            <button class="btn small danger" type="submit">
+                                Cancelar plan
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+
+                <tr th:if="${#lists.isEmpty(membresias)}">
+                    <td colspan="6" class="empty">
+                        <strong>Sin membresías registradas.</strong>
+                        <span>Inscribe al cliente para comenzar.</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <section class="card section-gap">
+        <div class="toolbar">
+            <div>
+                <p class="eyebrow">ACTIVIDAD DEL CLIENTE</p>
+                <h2>Historial de asistencias</h2>
+            </div>
+            <span class="badge neutral" th:text="${asistenciasMes} + ' este mes'"></span>
+        </div>
+
+        <div class="table-wrap" role="region"
+             aria-label="Asistencias del cliente" tabindex="0">
+            <table>
+                <thead>
+                <tr><th>Fecha</th><th>Local</th><th>Entrada</th><th>Salida</th></tr>
+                </thead>
+
+                <tbody>
+                <tr th:each="a : ${asistencias}">
+                    <td class="mono" th:text="${a.fecha}"></td>
+                    <td th:text="${a.gimnasio}"></td>
+                    <td class="mono" th:text="${a.horaEntrada}"></td>
+                    <td>
+                        <span th:if="${a.horaSalida != null}"
+                              th:text="${a.horaSalida}" class="mono"></span>
+                        <span th:unless="${a.horaSalida != null}"
+                              class="badge success">En curso</span>
+                    </td>
+                </tr>
+
+                <tr th:if="${#lists.isEmpty(asistencias)}">
+                    <td colspan="4" class="empty">
+                        <strong>Su historia está por empezar.</strong>
+                        <span>No hay asistencias registradas.</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

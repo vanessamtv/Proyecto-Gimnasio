@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments :: head('Nueva membresía')}"></head>
+<body>
+<nav th:replace="~{fragments :: nav}"></nav>
+<div th:replace="~{fragments :: mensajes}"></div>
+
+<main id="contenido" class="container page">
+    <a class="back-link" th:href="@{/membresias}">← Volver a membresías</a>
+
+    <header class="page-heading">
+        <div>
+            <p class="eyebrow">PLANES / INSCRIPCIÓN</p>
+            <h1>Un plan para avanzar.</h1>
+            <p class="muted">Selecciona el cliente, su plan y el local de entrenamiento.</p>
+        </div>
+    </header>
+
+    <div class="form-layout">
+        <aside class="form-aside membership-aside">
+            <p class="eyebrow">EL SIGUIENTE PASO</p>
+            <h2>Constancia.<br>Fuerza.<br>Resultados.</h2>
+            <p>
+                Una nueva membresía es una nueva oportunidad
+                para seguir creciendo.
+            </p>
+            <div class="aside-note">
+                <span>PLAN MENSUAL</span>
+                <span>30 DÍAS DE VIGENCIA</span>
+            </div>
+        </aside>
+
+        <form th:action="@{/membresias/inscribir}" method="post"
+              class="card form-card" id="membership-form"
+              th:attr="data-price-url=@{/membresias/precio}">
+            <div class="form-heading">
+                <h2>Nueva membresía</h2>
+                <p class="muted">Todos los campos son obligatorios.</p>
+            </div>
+
+            <div class="field">
+                <label for="clienteId">Cliente <span>*</span></label>
+                <select id="clienteId" name="clienteId" required>
+                    <option value="">Selecciona un cliente</option>
+                    <option th:each="c : ${clientes}"
+                            th:value="${c.id}"
+                            th:text="${c.nombreCompleto} + ' (' + ${c.dni} + ')'"
+                            th:selected="${clienteId != null and clienteId == c.id}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="form-grid">
+                <div class="field">
+                    <label for="plan">Plan <span>*</span></label>
+                    <select id="plan" name="plan" required>
+                        <option th:each="p : ${planes}"
+                                th:value="${p}" th:text="${p}"></option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="gimnasio">Local <span>*</span></label>
+                    <select id="gimnasio" name="gimnasio" required>
+                        <option th:each="g : ${gimnasios}"
+                                th:value="${g}" th:text="${g}"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="price-preview">
+                <div>
+                    <span class="eyebrow">PRECIO DEL PLAN</span>
+                    <small>Calculado según el plan y el local.</small>
+                </div>
+                <output id="plan-price" aria-live="polite">Consultar…</output>
+            </div>
+
+            <p class="muted small-text">
+                El precio final se calcula automáticamente al registrar la membresía.
+            </p>
+
+            <div class="form-actions">
+                <a th:href="@{/membresias}" class="btn secondary">Cancelar</a>
+                <button type="submit" class="btn primary">Inscribir cliente →</button>
+            </div>
+        </form>
+    </div>
+</main>
+
+<footer th:replace="~{fragments :: footer}"></footer>
+</body>
+</html>

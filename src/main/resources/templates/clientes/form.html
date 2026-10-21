@@ -34,7 +34,7 @@
         </aside>
 
         <form th:action="@{/clientes/guardar}" th:object="${cliente}"
-              method="post" class="card form-card">
+              method="post" class="card form-card" novalidate>
             <input type="hidden" th:field="*{id}">
 
             <div class="form-heading">

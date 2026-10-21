@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pe.edu.utp.gimnasio.dto.ClienteDTO;
 import pe.edu.utp.gimnasio.model.Cliente;
 import pe.edu.utp.gimnasio.service.AsistenciaService;
 import pe.edu.utp.gimnasio.service.ClienteService;
@@ -36,13 +37,13 @@ public class ClienteController {
 
     @GetMapping("/nuevo")
     public String nuevoForm(Model model) {
-        model.addAttribute("cliente", new Cliente());
+        model.addAttribute("cliente", new ClienteDTO());
         return "clientes/form";
     }
 
     @GetMapping("/{id}/editar")
     public String editarForm(@PathVariable Long id, Model model) {
-        model.addAttribute("cliente", clienteService.buscarPorId(id));
+        model.addAttribute("cliente", aDTO(clienteService.buscarPorId(id)));
         return "clientes/form";
     }
 
@@ -58,17 +59,19 @@ public class ClienteController {
     }
 
     @PostMapping("/guardar")
-    public String guardar(@Valid @ModelAttribute("cliente") Cliente cliente, BindingResult binding,
+    public String guardar(@Valid @ModelAttribute("cliente") ClienteDTO dto, BindingResult binding,
                            RedirectAttributes redirectAttributes, Model model) {
+        // Spring Validation: si el DTO tiene errores, se vuelve al formulario mostrando los mensajes
         if (binding.hasErrors()) {
             return "clientes/form";
         }
         try {
-            if (cliente.getId() == null) {
+            Cliente cliente = aEntidad(dto);
+            if (dto.getId() == null) {
                 clienteService.registrar(cliente);
                 redirectAttributes.addFlashAttribute("mensaje", "Cliente registrado correctamente.");
             } else {
-                clienteService.actualizar(cliente.getId(), cliente);
+                clienteService.actualizar(dto.getId(), cliente);
                 redirectAttributes.addFlashAttribute("mensaje", "Cliente actualizado correctamente.");
             }
         } catch (IllegalArgumentException ex) {
@@ -90,5 +93,30 @@ public class ClienteController {
         clienteService.reactivar(id);
         redirectAttributes.addFlashAttribute("mensaje", "Cliente reactivado.");
         return "redirect:/clientes";
+    }
+
+    // ---------- Conversion DTO <-> Entidad ----------
+
+    private ClienteDTO aDTO(Cliente c) {
+        ClienteDTO dto = new ClienteDTO();
+        dto.setId(c.getId());
+        dto.setNombres(c.getNombres());
+        dto.setApellidos(c.getApellidos());
+        dto.setDni(c.getDni());
+        dto.setEmail(c.getEmail());
+        dto.setTelefono(c.getTelefono());
+        dto.setFechaNacimiento(c.getFechaNacimiento());
+        return dto;
+    }
+
+    private Cliente aEntidad(ClienteDTO dto) {
+        Cliente c = new Cliente();
+        c.setNombres(dto.getNombres());
+        c.setApellidos(dto.getApellidos());
+        c.setDni(dto.getDni());
+        c.setEmail(dto.getEmail());
+        c.setTelefono(dto.getTelefono());
+        c.setFechaNacimiento(dto.getFechaNacimiento());
+        return c;
     }
 }

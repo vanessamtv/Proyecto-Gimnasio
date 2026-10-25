@@ -30,7 +30,7 @@
             </div>
         </aside>
 
-        <form th:action="@{/membresias/inscribir}" method="post"
+        <form th:action="@{/membresias/inscribir}" th:object="${membresia}" method="post"
               class="card form-card" id="membership-form"
               th:attr="data-price-url=@{/membresias/precio}">
             <div class="form-heading">
@@ -40,31 +40,47 @@
 
             <div class="field">
                 <label for="clienteId">Cliente <span>*</span></label>
-                <select id="clienteId" name="clienteId" required>
+                <select id="clienteId" th:field="*{clienteId}"
+                        th:classappend="${#fields.hasErrors('clienteId')} ? 'invalid'"
+                        aria-describedby="clienteId-error">
                     <option value="">Selecciona un cliente</option>
                     <option th:each="c : ${clientes}"
                             th:value="${c.id}"
-                            th:text="${c.nombreCompleto} + ' (' + ${c.dni} + ')'"
-                            th:selected="${clienteId != null and clienteId == c.id}">
+                            th:text="${c.nombreCompleto} + ' (' + ${c.dni} + ')'">
                     </option>
                 </select>
+                <small id="clienteId-error" class="field-error"
+                       th:if="${#fields.hasErrors('clienteId')}"
+                       th:errors="*{clienteId}"></small>
             </div>
 
             <div class="form-grid">
                 <div class="field">
                     <label for="plan">Plan <span>*</span></label>
-                    <select id="plan" name="plan" required>
+                    <select id="plan" th:field="*{plan}"
+                            th:classappend="${#fields.hasErrors('plan')} ? 'invalid'"
+                            aria-describedby="plan-error">
+                        <option value="">Selecciona un plan</option>
                         <option th:each="p : ${planes}"
                                 th:value="${p}" th:text="${p}"></option>
                     </select>
+                    <small id="plan-error" class="field-error"
+                           th:if="${#fields.hasErrors('plan')}"
+                           th:errors="*{plan}"></small>
                 </div>
 
                 <div class="field">
                     <label for="gimnasio">Local <span>*</span></label>
-                    <select id="gimnasio" name="gimnasio" required>
+                    <select id="gimnasio" th:field="*{gimnasio}"
+                            th:classappend="${#fields.hasErrors('gimnasio')} ? 'invalid'"
+                            aria-describedby="gimnasio-error">
+                        <option value="">Selecciona un local</option>
                         <option th:each="g : ${gimnasios}"
                                 th:value="${g}" th:text="${g}"></option>
                     </select>
+                    <small id="gimnasio-error" class="field-error"
+                           th:if="${#fields.hasErrors('gimnasio')}"
+                           th:errors="*{gimnasio}"></small>
                 </div>
             </div>
 

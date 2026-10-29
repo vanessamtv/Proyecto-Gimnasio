@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="~{fragments :: head('Clientes')}"></head>
+
 <body>
+
+<!-- NAVBAR -->
 <nav th:replace="~{fragments :: nav}"></nav>
+
+<!-- MENSAJES -->
 <div th:replace="~{fragments :: mensajes}"></div>
 
-<main id="contenido" class="container page">
+<main id="contenido" class="container page clientes-page">
+
+    <!-- ENCABEZADO -->
     <header class="page-heading">
         <div>
             <p class="eyebrow">COMUNIDAD / CLIENTES</p>
+
             <h1>Tu comunidad, en un solo lugar.</h1>
+
             <p class="muted">
-                Registra clientes, consulta sus datos y administra su estado.
+                Registra clientes, consulta sus datos
+                y administra su estado.
             </p>
         </div>
 
@@ -20,118 +31,518 @@
         </a>
     </header>
 
+    <!-- DIRECTORIO -->
     <section class="card">
+
+        <!-- BARRA SUPERIOR -->
         <div class="toolbar">
             <div>
                 <h2>Directorio de clientes</h2>
+
                 <span class="muted"
-                      th:text="${#lists.size(clientes)} + ' clientes en esta vista'">
+                      th:text="|${#lists.size(clientes)} clientes en esta vista|">
+                    Clientes registrados
                 </span>
             </div>
 
-            <form th:action="@{/clientes}" method="get" class="search">
-                <label for="q" class="sr-only">
-                    Buscar por nombre o apellido
-                </label>
-                <input id="q" type="search" name="q"
-                       th:value="${q}" placeholder="Nombre o apellido…">
+            <!-- BUSCADOR -->
+            <form th:action="@{/clientes}"
+                  method="get"
+                  class="search">
 
-                <button type="submit" class="btn secondary">Buscar</button>
+                <label for="q" class="sr-only">
+                    Buscar cliente
+                </label>
+
+                <input id="q"
+                       type="search"
+                       name="q"
+                       th:value="${q}"
+                       placeholder="Nombre o apellido..."
+                       autocomplete="off">
+
+                <button type="submit" class="btn secondary">
+                    Buscar
+                </button>
 
                 <a th:if="${q != null and !#strings.isEmpty(q)}"
-                   th:href="@{/clientes}" class="btn ghost">
+                   th:href="@{/clientes}"
+                   class="btn ghost">
                     Limpiar
                 </a>
             </form>
         </div>
 
-        <div class="table-wrap" role="region"
-             aria-label="Lista de clientes" tabindex="0">
+        <!-- TABLA DE CLIENTES -->
+        <div class="table-wrap"
+             role="region"
+             aria-label="Lista de clientes"
+             tabindex="0">
+
             <table>
                 <thead>
-                <tr>
-                    <th>DNI</th>
-                    <th>Cliente</th>
-                    <th>Contacto</th>
-                    <th>Edad</th>
-                    <th>Estado</th>
-                    <th class="right">Acciones</th>
-                </tr>
+                    <tr>
+                        <th>DNI</th>
+                        <th>Cliente</th>
+                        <th>Contacto</th>
+                        <th>Edad</th>
+                        <th>Estado</th>
+                        <th class="right">Acciones</th>
+                    </tr>
                 </thead>
 
-                <tbody>
-                <tr th:each="c : ${clientes}">
-                    <td class="mono" th:text="${c.dni}"></td>
+                <tbody id="tablaClientes">
 
-                    <td>
-                        <a class="name-link"
-                           th:href="@{/clientes/{id}(id=${c.id})}"
-                           th:text="${c.nombreCompleto}">
-                        </a>
-                    </td>
+                    <!-- CLIENTES -->
+                    <tr class="fila-cliente"
+                        th:each="c : ${clientes}">
 
-                    <td>
-                        <span th:text="${c.email}"></span>
-                        <small class="cell-sub" th:text="${c.telefono}"></small>
-                    </td>
+                        <!-- DNI -->
+                        <td class="mono"
+                            th:text="${c.dni}">
+                        </td>
 
-                    <td th:text="${c.edad} + ' años'"></td>
-
-                    <td>
-                        <span th:if="${c.activo}" class="badge success">
-                            Activo
-                        </span>
-                        <span th:unless="${c.activo}" class="badge neutral">
-                            De baja
-                        </span>
-                    </td>
-
-                    <td>
-                        <div class="actions end nowrap">
-                            <a class="btn small secondary"
-                               th:href="@{/clientes/{id}(id=${c.id})}">
-                                Ver
+                        <!-- NOMBRE -->
+                        <td>
+                            <a class="name-link"
+                               th:href="@{/clientes/{id}(id=${c.id})}"
+                               th:text="${c.nombreCompleto}">
+                                Nombre del cliente
                             </a>
+                        </td>
 
-                            <a class="btn small secondary"
-                               th:href="@{/clientes/{id}/editar(id=${c.id})}">
-                                Editar
-                            </a>
+                        <!-- CONTACTO -->
+                        <td>
+                            <span th:text="${c.email}"></span>
 
-                            <form th:if="${c.activo}"
-                                  th:action="@{/clientes/{id}/baja(id=${c.id})}"
-                                  method="post"
-                                  onsubmit="return confirm('¿Dar de baja a este cliente?');">
-                                <button type="submit" class="btn small danger">
-                                    Dar de baja
-                                </button>
-                            </form>
+                            <small class="cell-sub"
+                                   th:text="${c.telefono}">
+                            </small>
+                        </td>
 
-                            <form th:unless="${c.activo}"
-                                  th:action="@{/clientes/{id}/reactivar(id=${c.id})}"
-                                  method="post">
-                                <button type="submit" class="btn small secondary">
-                                    Reactivar
-                                </button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
+                        <!-- EDAD -->
+                        <td th:text="|${c.edad} años|"></td>
 
-                <tr th:if="${#lists.isEmpty(clientes)}">
-                    <td colspan="6" class="empty">
-                        <strong>No hay clientes para mostrar.</strong>
-                        <span>
-                            Registra un nuevo cliente o prueba con otra búsqueda.
-                        </span>
-                    </td>
-                </tr>
+                        <!-- ESTADO -->
+                        <td>
+                            <span th:if="${c.activo}"
+                                  class="badge success">
+                                Activo
+                            </span>
+
+                            <span th:unless="${c.activo}"
+                                  class="badge neutral">
+                                De baja
+                            </span>
+                        </td>
+
+                        <!-- ACCIONES -->
+                        <td>
+                            <div class="actions end nowrap">
+
+                                <!-- VER -->
+                                <a class="btn small secondary"
+                                   th:href="@{/clientes/{id}(id=${c.id})}">
+                                    Ver
+                                </a>
+
+                                <!-- EDITAR -->
+                                <a class="btn small secondary"
+                                   th:href="@{/clientes/{id}/editar(id=${c.id})}">
+                                    Editar
+                                </a>
+
+                                <!-- DAR DE BAJA -->
+                                <form th:if="${c.activo}"
+                                      th:action="@{/clientes/{id}/baja(id=${c.id})}"
+                                      method="post"
+                                      onsubmit="return confirm('¿Dar de baja a este cliente?');">
+
+                                    <button type="submit"
+                                            class="btn small danger">
+                                        Dar de baja
+                                    </button>
+                                </form>
+
+                                <!-- REACTIVAR -->
+                                <form th:unless="${c.activo}"
+                                      th:action="@{/clientes/{id}/reactivar(id=${c.id})}"
+                                      method="post">
+
+                                    <button type="submit"
+                                            class="btn small secondary">
+                                        Reactivar
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+
+                    <!-- SIN RESULTADOS -->
+                    <tr th:if="${#lists.isEmpty(clientes)}">
+                        <td colspan="6" class="empty">
+                            <strong>
+                                No hay clientes para mostrar.
+                            </strong>
+
+                            <span>
+                                Registra un cliente o prueba
+                                con otra búsqueda.
+                            </span>
+                        </td>
+                    </tr>
+
                 </tbody>
             </table>
         </div>
+
+        <!-- PAGINACIÓN -->
+        <div id="paginacionClientes"
+             class="paginacion-contenedor"
+             hidden>
+
+            <p id="infoPaginacion"
+               class="paginacion-info"
+               aria-live="polite">
+            </p>
+
+            <nav class="paginacion-google"
+                 aria-label="Paginación de clientes">
+
+                <!-- ANTERIOR -->
+                <button type="button"
+                        id="btnAnterior"
+                        class="navegacion">
+                    &#10094; Anterior
+                </button>
+
+                <!-- NÚMEROS -->
+                <div id="numerosPaginas"
+                     class="numeros">
+                </div>
+
+                <!-- SIGUIENTE -->
+                <button type="button"
+                        id="btnSiguiente"
+                        class="navegacion">
+                    Siguiente &#10095;
+                </button>
+
+            </nav>
+        </div>
+
     </section>
 </main>
 
+<!-- FOOTER -->
 <footer th:replace="~{fragments :: footer}"></footer>
+
+
+<!-- ======================================
+     ESTILOS DE PAGINACIÓN
+     ====================================== -->
+
+<style>
+
+.clientes-page .paginacion-contenedor {
+    padding: 28px 16px;
+    background: #ffffff;
+    border-top: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+.clientes-page .paginacion-contenedor[hidden] {
+    display: none !important;
+}
+
+.clientes-page .paginacion-info {
+    margin: 0 0 18px;
+    color: #5C5C5C;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.clientes-page .paginacion-google {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.clientes-page .paginacion-google .numeros {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* NÚMEROS */
+
+.clientes-page .paginacion-google .numero {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 42px;
+    height: 42px;
+
+    border: 1px solid #e4e4e4;
+    border-radius: 50%;
+
+    background: #ffffff;
+    color: #1C1C1C;
+
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+/* EFECTO HOVER */
+
+.clientes-page .paginacion-google .numero:hover {
+    background: #fbeaea;
+    color: #B71C1C;
+    border-color: #B71C1C;
+}
+
+/* PÁGINA ACTIVA */
+
+.clientes-page .paginacion-google .numero.activo {
+    background: #B71C1C;
+    color: #ffffff;
+    border-color: #B71C1C;
+    box-shadow: 0 3px 10px rgba(183, 28, 28, .2);
+}
+
+/* ANTERIOR Y SIGUIENTE */
+
+.clientes-page .paginacion-google .navegacion {
+    padding: 10px 14px;
+
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+
+    color: #1C1C1C;
+
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.clientes-page .paginacion-google .navegacion:hover:not(:disabled) {
+    background: #fbeaea;
+    color: #B71C1C;
+}
+
+.clientes-page .paginacion-google button:disabled {
+    opacity: .35;
+    cursor: not-allowed;
+}
+
+.clientes-page .paginacion-google button:focus-visible {
+    outline: 3px solid #E0A800;
+    outline-offset: 3px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+
+    .clientes-page .paginacion-google {
+        gap: 6px;
+    }
+
+    .clientes-page .paginacion-google .numero {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    .clientes-page .paginacion-google .navegacion {
+        padding: 8px;
+        font-size: 12px;
+    }
+}
+
+</style>
+
+
+<!-- ======================================
+     JAVASCRIPT - PAGINACIÓN CLIENTES
+     ====================================== -->
+
+<script>
+(function () {
+    "use strict";
+
+    function iniciarPaginacion() {
+
+        const filas = Array.from(
+            document.querySelectorAll(
+                "#tablaClientes .fila-cliente"
+            )
+        );
+
+        const contenedor = document.getElementById(
+            "paginacionClientes"
+        );
+
+        const numeros = document.getElementById(
+            "numerosPaginas"
+        );
+
+        const info = document.getElementById(
+            "infoPaginacion"
+        );
+
+        const anterior = document.getElementById(
+            "btnAnterior"
+        );
+
+        const siguiente = document.getElementById(
+            "btnSiguiente"
+        );
+
+        if (!contenedor || !numeros || !info ||
+            !anterior || !siguiente) {
+            console.error(
+                "Error: no se encontraron los elementos de paginación"
+            );
+            return;
+        }
+
+        const registrosPorPagina = 50;
+
+        const totalRegistros = filas.length;
+
+        const totalPaginas = Math.ceil(
+            totalRegistros / registrosPorPagina
+        );
+
+        let paginaActual = 1;
+
+        // No mostrar paginación si hay 50 o menos
+        if (totalPaginas <= 1) {
+            contenedor.hidden = true;
+            return;
+        }
+
+        contenedor.hidden = false;
+
+        // MOSTRAR PÁGINA
+        function mostrarPagina(numero) {
+
+            if (numero < 1 || numero > totalPaginas) {
+                return;
+            }
+
+            paginaActual = numero;
+
+            const inicio =
+                (paginaActual - 1) * registrosPorPagina;
+
+            const fin = Math.min(
+                inicio + registrosPorPagina,
+                totalRegistros
+            );
+
+            // Mostrar solo las filas correspondientes
+            filas.forEach((fila, indice) => {
+
+                const visible =
+                    indice >= inicio && indice < fin;
+
+                fila.style.display = visible ? "" : "none";
+            });
+
+            // Información de registros
+            info.textContent =
+                `Mostrando ${inicio + 1}–${fin} de ${totalRegistros} clientes`;
+
+            // Limpiar números anteriores
+            numeros.replaceChildren();
+
+            // Crear botones de páginas
+            for (let i = 1; i <= totalPaginas; i++) {
+
+                const boton = document.createElement(
+                    "button"
+                );
+
+                boton.type = "button";
+                boton.className = "numero";
+                boton.textContent = i;
+
+                boton.setAttribute(
+                    "aria-label",
+                    `Ir a la página ${i}`
+                );
+
+                if (i === paginaActual) {
+                    boton.classList.add("activo");
+                    boton.setAttribute(
+                        "aria-current",
+                        "page"
+                    );
+                }
+
+                boton.addEventListener("click", function () {
+                    mostrarPagina(i);
+                });
+
+                numeros.appendChild(boton);
+            }
+
+            // Actualizar navegación
+            anterior.disabled = paginaActual === 1;
+
+            siguiente.disabled =
+                paginaActual === totalPaginas;
+        }
+
+        // ANTERIOR
+        anterior.addEventListener("click", function () {
+            mostrarPagina(paginaActual - 1);
+        });
+
+        // SIGUIENTE
+        siguiente.addEventListener("click", function () {
+            mostrarPagina(paginaActual + 1);
+        });
+
+        // Cargar primera página
+        mostrarPagina(1);
+
+        console.log(
+            "Paginación iniciada:",
+            totalRegistros,
+            "clientes,",
+            totalPaginas,
+            "páginas"
+        );
+    }
+
+    // Iniciar cuando esté listo el documento
+    if (document.readyState === "loading") {
+        document.addEventListener(
+            "DOMContentLoaded",
+            iniciarPaginacion
+        );
+    } else {
+        iniciarPaginacion();
+    }
+
+})();
+</script>
+
 </body>
 </html>

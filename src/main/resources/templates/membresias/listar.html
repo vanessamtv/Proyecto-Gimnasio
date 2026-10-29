@@ -1,90 +1,228 @@
+
 <!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments :: head('Membresías')}"></head>
+<html lang="es"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="~{fragments :: head('Membresías')}">
+</head>
+
 <body>
+
+<!-- NAVBAR -->
 <nav th:replace="~{fragments :: nav}"></nav>
+
+<!-- MENSAJES -->
 <div th:replace="~{fragments :: mensajes}"></div>
 
-<main id="contenido" class="container page">
+<main id="contenido"
+      class="container page membresias-page">
+
+    <!-- ENCABEZADO -->
     <header class="page-heading">
+
         <div>
-            <p class="eyebrow">PLANES / MEMBRESÍAS</p>
+            <p class="eyebrow">
+                PLANES / MEMBRESÍAS
+            </p>
+
             <h1>Gestiona las membresías.</h1>
+
             <p class="muted">
-                Consulta los planes, precios y fechas de vencimiento.
+                Consulta los planes, precios,
+                fechas de vencimiento y estados.
             </p>
         </div>
-        <a th:href="@{/membresias/nueva}" class="btn primary">
+
+        <a th:href="@{/membresias/nueva}"
+           class="btn primary">
             + Nueva membresía
         </a>
+
     </header>
 
+    <!-- CONTENEDOR PRINCIPAL -->
     <section class="card">
+
+        <!-- BARRA SUPERIOR -->
         <div class="toolbar">
+
             <div>
                 <h2>Membresías registradas</h2>
+
                 <span class="muted"
-                      th:text="${#lists.size(membresias)} + ' registros'"></span>
+                      th:text="|${totalRegistros} registros|">
+                    0 registros
+                </span>
             </div>
-            <span class="badge neutral">Historial de planes</span>
+
+            <span class="badge neutral">
+                Historial de planes
+            </span>
+
         </div>
 
-        <div class="table-wrap" role="region"
-             aria-label="Lista de membresías" tabindex="0">
+        <!-- TABLA -->
+        <div class="table-wrap"
+             role="region"
+             aria-label="Lista de membresías"
+             tabindex="0">
+
             <table>
+
                 <thead>
-                <tr>
-                    <th>Cliente</th>
-                    <th>Plan</th>
-                    <th>Local</th>
-                    <th>Inicio</th>
-                    <th>Vencimiento</th>
-                    <th>Precio</th>
-                    <th>Estado</th>
-                </tr>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Plan</th>
+                        <th>Local</th>
+                        <th>Inicio</th>
+                        <th>Vencimiento</th>
+                        <th>Precio</th>
+                        <th>Estado</th>
+                    </tr>
                 </thead>
 
                 <tbody>
-                <tr th:each="m : ${membresias}">
-                    <td>
-                        <a class="name-link"
-                           th:href="@{/clientes/{id}(id=${m.cliente.id})}"
-                           th:text="${m.cliente.nombreCompleto}"></a>
-                    </td>
-                    <td>
-                        <span class="plan-chip" th:text="${m.tipoPlan}"></span>
-                    </td>
-                    <td th:text="${m.gimnasio}"></td>
-                    <td class="mono" th:text="${m.fechaInicio}"></td>
-                    <td class="mono" th:text="${m.fechaFin}"></td>
-                    <td class="price" th:text="'S/ ' + ${m.precio}"></td>
-                    <td th:switch="${m.estado.name()}">
-                        <span th:case="'ACTIVA'" class="badge success">
-                            Activa
-                        </span>
-                        <span th:case="'VENCIDA'" class="badge warning">
-                            Vencida
-                        </span>
-                        <span th:case="*" class="badge neutral">
-                            Cancelada
-                        </span>
-                    </td>
-                </tr>
 
-                <tr th:if="${#lists.isEmpty(membresias)}">
-                    <td colspan="7" class="empty">
-                        <strong>Aún no hay membresías registradas.</strong>
-                        <span>
-                            Haz clic en “Nueva membresía” para inscribir un cliente.
-                        </span>
-                    </td>
-                </tr>
+                    <!-- REGISTROS -->
+                    <tr th:each="m : ${membresias}">
+
+                        <!-- CLIENTE -->
+                        <td>
+                            <a class="name-link"
+                               th:href="@{/clientes/{id}(id=${m.cliente.id})}"
+                               th:text="${m.cliente.nombreCompleto}">
+                                Cliente
+                            </a>
+                        </td>
+
+                        <!-- PLAN -->
+                        <td>
+                            <span class="plan-chip"
+                                  th:text="${m.tipoPlan}">
+                                SMART
+                            </span>
+                        </td>
+
+                        <!-- LOCAL -->
+                        <td th:text="${m.gimnasio}">
+                            CHOSICA
+                        </td>
+
+                        <!-- FECHA DE INICIO -->
+                        <td class="mono"
+                            th:text="${m.fechaInicio}">
+                        </td>
+
+                        <!-- VENCIMIENTO -->
+                        <td class="mono"
+                            th:text="${m.fechaFin}">
+                        </td>
+
+                        <!-- PRECIO -->
+                        <td class="price"
+                            th:text="|S/ ${m.precio}|">
+                        </td>
+
+                        <!-- ESTADO -->
+                        <td th:switch="${m.estado != null ? m.estado.name() : ''}">
+
+                            <span th:case="'ACTIVA'"
+                                  class="badge success">
+                                Activa
+                            </span>
+
+                            <span th:case="'VENCIDA'"
+                                  class="badge warning">
+                                Vencida
+                            </span>
+
+                            <span th:case="*"
+                                  class="badge neutral">
+                                Cancelada
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                    <!-- SIN REGISTROS -->
+                    <tr th:if="${#lists.isEmpty(membresias)}">
+
+                        <td colspan="7" class="empty">
+
+                            <strong>
+                                No hay membresías registradas.
+                            </strong>
+
+                            <span>
+                                Registra una nueva membresía
+                                para comenzar.
+                            </span>
+
+                        </td>
+
+                    </tr>
+
                 </tbody>
+
             </table>
+
         </div>
+
+        <!-- ==================================
+             PAGINACION SIN JAVASCRIPT
+             ================================== -->
+
+        <div class="paginacion-contenedor"
+             th:if="${totalPaginas > 1}">
+
+            <!-- INFORMACION -->
+            <p class="paginacion-info"
+               th:text="|Mostrando ${paginaActual * registrosPorPagina + 1}–${paginaActual * registrosPorPagina + #lists.size(membresias)} de ${totalRegistros} membresías|">
+                Mostrando 1–50 de 150 membresías
+            </p>
+
+            <nav class="paginacion-google"
+                 aria-label="Páginas de membresías">
+
+                <!-- ANTERIOR -->
+                <a th:if="${paginaActual > 0}"
+                   th:href="@{/membresias(page=${paginaActual - 1})}"
+                   class="navegacion">
+                    &#10094; Anterior
+                </a>
+
+                <!-- NUMEROS -->
+                <div class="numeros">
+
+                    <a th:each="i : ${#numbers.sequence(0, totalPaginas - 1)}"
+                       th:href="@{/membresias(page=${i})}"
+                       th:text="${i + 1}"
+                       th:classappend="${i == paginaActual} ? 'activo' : ''"
+                       th:attr="aria-current=${i == paginaActual ? 'page' : null}"
+                       class="numero">
+                        1
+                    </a>
+
+                </div>
+
+                <!-- SIGUIENTE -->
+                <a th:if="${paginaActual + 1 < totalPaginas}"
+                   th:href="@{/membresias(page=${paginaActual + 1})}"
+                   class="navegacion">
+                    Siguiente &#10095;
+                </a>
+
+            </nav>
+
+        </div>
+
     </section>
+
 </main>
 
+<!-- FOOTER -->
 <footer th:replace="~{fragments :: footer}"></footer>
+
 </body>
 </html>

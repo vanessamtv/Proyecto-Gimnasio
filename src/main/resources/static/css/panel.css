@@ -1,90 +1,590 @@
-:root{
-  --ic-black:#1C1C1C;
-  --ic-black-2:#151515;
-  --ic-gray:#5C5C5C;
-  --ic-red:#B71C1C;
-  --ic-gold:#E0A800;
-  --font-titulo:'Anton', sans-serif;
-  --font-detalle:'Barlow Condensed', sans-serif;
+
+/* ==========================================
+   IMPERIUM CROSS
+   PANEL DE GESTIÓN
+   ========================================== */
+
+/* ---------- VARIABLES ---------- */
+
+:root {
+    --ic-black: #1C1C1C;
+    --ic-black-2: #151515;
+    --ic-gray: #5C5C5C;
+    --ic-red: #B71C1C;
+    --ic-red-dark: #8E1515;
+    --ic-gold: #E0A800;
+
+    --ic-white: #FFFFFF;
+    --ic-background: #F2F2F2;
+    --ic-border: #E4E4E4;
+
+    --font-titulo: 'Anton', sans-serif;
+    --font-detalle: 'Barlow Condensed', sans-serif;
+    --font-principal: 'Barlow', sans-serif;
 }
 
-body{
-  font-family:'Barlow', sans-serif;
-  background:#f2f2f2;
+/* ---------- ESTILOS GENERALES ---------- */
+
+body {
+    font-family: var(--font-principal);
+    background: var(--ic-background);
+    color: var(--ic-black);
 }
-h1,h2,h3,.titulo{ font-family:var(--font-titulo); text-transform:uppercase; letter-spacing:.5px; }
-.eyebrow{ font-family:var(--font-detalle); text-transform:uppercase; font-weight:700; letter-spacing:2px; color:var(--ic-red); }
-a{ color:var(--ic-red); }
-a:hover{ color:var(--ic-gold); }
 
-/* ---------- Navbar ---------- */
-.navbar-ic{ background:var(--ic-black); border-bottom:3px solid var(--ic-red); }
-.navbar-ic .navbar-brand{ display:flex; align-items:center; gap:.6rem; }
-.navbar-ic .navbar-brand img{ height:38px; }
-.navbar-ic .navbar-brand span{ font-family:var(--font-titulo); color:#fff; font-size:1.15rem; }
-.navbar-ic .navbar-brand span em{ color:var(--ic-red); font-style:normal; }
-.navbar-ic .nav-link{ font-family:var(--font-detalle); font-weight:600; color:#fff !important; text-transform:uppercase; letter-spacing:.5px; }
-.navbar-ic .nav-link.active, .navbar-ic .nav-link:hover{ color:var(--ic-gold) !important; }
-
-/* ---------- Botones ---------- */
-.btn-ic-primary{ background:var(--ic-red); border:2px solid var(--ic-red); color:#fff; font-family:var(--font-detalle); font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
-.btn-ic-primary:hover{ background:transparent; color:var(--ic-red); }
-.btn-ic-outline{ background:transparent; border:2px solid #fff; color:#fff; font-family:var(--font-detalle); font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
-.btn-ic-outline:hover{ background:#fff; color:var(--ic-black); }
-.btn-ic-outline-dark{ background:transparent; border:2px solid var(--ic-black); color:var(--ic-black); font-family:var(--font-detalle); font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
-.btn-ic-outline-dark:hover{ background:var(--ic-black); color:#fff; }
-.btn-ic-gold{ background:var(--ic-gold); border:2px solid var(--ic-gold); color:var(--ic-black); font-family:var(--font-detalle); font-weight:700; text-transform:uppercase; letter-spacing:.5px; }
-.btn-ic-gold:hover{ background:transparent; color:var(--ic-gold); }
-
-/* ---------- Hero ---------- */
-.hero-ic{
-  position:relative;
-  min-height:440px;
-  display:flex;
-  align-items:center;
-  background-size:cover;
-  background-position:center;
-  border-bottom:4px solid var(--ic-red);
+h1,
+h2,
+h3,
+.titulo {
+    font-family: var(--font-titulo);
+    text-transform: uppercase;
+    letter-spacing: .5px;
 }
-.hero-ic::before{
-  content:"";
-  position:absolute; inset:0;
-  background:linear-gradient(90deg, rgba(18,18,18,.95) 0%, rgba(18,18,18,.55) 100%);
+
+.eyebrow {
+    font-family: var(--font-detalle);
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--ic-red);
 }
-.hero-ic .contenido{ position:relative; z-index:1; color:#fff; }
-.hero-ic .contenido h1{ font-size:2.8rem; }
 
-/* ---------- Tarjetas ---------- */
-.card-ic{
-  background:#fff;
-  border:1px solid #e4e4e4;
-  border-radius:.4rem;
-  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+a {
+    color: var(--ic-red);
+    transition: color .2s ease;
 }
-.card-ic:hover{ transform:translateY(-4px); border-color:var(--ic-red); box-shadow:0 8px 20px rgba(0,0,0,.12); }
-.stat-card{ text-align:center; padding:1.5rem 1rem; }
-.stat-card .num{ font-family:var(--font-titulo); font-size:2.4rem; color:var(--ic-black); }
-.stat-card .label{ font-family:var(--font-detalle); text-transform:uppercase; color:var(--ic-gray); letter-spacing:1px; font-size:.85rem; }
 
-.zona-card{ overflow:hidden; border:none; border-radius:.4rem; box-shadow:0 2px 10px rgba(0,0,0,.15); position:relative; }
-.zona-card img{ width:100%; height:210px; object-fit:cover; transition:transform .35s; display:block; }
-.zona-card:hover img{ transform:scale(1.07); }
+a:hover {
+    color: var(--ic-gold);
+}
 
-/* ---------- Secciones oscuras / tablas ---------- */
-.section-dark{ background:var(--ic-black); color:#fff; }
-.table-ic thead th{ background:var(--ic-black); color:var(--ic-gold); font-family:var(--font-detalle); text-transform:uppercase; letter-spacing:.5px; border:none; }
-.table-ic tbody tr:hover{ background:#fbeaea; }
+/* ---------- NAVBAR ---------- */
 
-.badge-ic-activa{ background:var(--ic-red); color:#fff; font-family:var(--font-detalle); text-transform:uppercase; }
-.badge-ic-vencida{ background:var(--ic-gray); color:#fff; font-family:var(--font-detalle); text-transform:uppercase; }
-.badge-ic-cancelada{ background:#333; color:#fff; font-family:var(--font-detalle); text-transform:uppercase; }
-.badge-ic-gold{ background:var(--ic-gold); color:var(--ic-black); font-family:var(--font-detalle); text-transform:uppercase; }
+.navbar-ic {
+    background: var(--ic-black);
+    border-bottom: 3px solid var(--ic-red);
+}
 
-/* ---------- Formularios ---------- */
-.form-ic label{ font-family:var(--font-detalle); text-transform:uppercase; font-size:.85rem; font-weight:700; color:var(--ic-gray); }
-.form-ic .form-control:focus, .form-ic .form-select:focus{ border-color:var(--ic-red); box-shadow:0 0 0 .2rem rgba(183,28,28,.15); }
-.card-form{ background:#fff; border-top:4px solid var(--ic-red); border-radius:.4rem; box-shadow:0 4px 16px rgba(0,0,0,.08); padding:2rem; }
+.navbar-ic .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+}
 
-/* ---------- Footer ---------- */
-.footer-ic{ background:var(--ic-black); color:#aaa; text-align:center; padding:2rem 0; }
-.footer-ic img{ height:34px; margin-bottom:.5rem; }
+.navbar-ic .navbar-brand img {
+    height: 38px;
+}
+
+.navbar-ic .navbar-brand span {
+    font-family: var(--font-titulo);
+    color: var(--ic-white);
+    font-size: 1.15rem;
+}
+
+.navbar-ic .navbar-brand span em {
+    color: var(--ic-red);
+    font-style: normal;
+}
+
+.navbar-ic .nav-link {
+    font-family: var(--font-detalle);
+    font-weight: 600;
+    color: #fff !important;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+}
+
+.navbar-ic .nav-link.active,
+.navbar-ic .nav-link:hover {
+    color: var(--ic-gold) !important;
+}
+
+/* ---------- BOTONES ---------- */
+
+.btn-ic-primary,
+.btn-ic-outline,
+.btn-ic-outline-dark,
+.btn-ic-gold {
+    font-family: var(--font-detalle);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    border-width: 2px;
+    border-style: solid;
+    transition: all .2s ease;
+}
+
+.btn-ic-primary {
+    background: var(--ic-red);
+    border-color: var(--ic-red);
+    color: #fff;
+}
+
+.btn-ic-primary:hover {
+    background: var(--ic-red-dark);
+    border-color: var(--ic-red-dark);
+    color: #fff;
+}
+
+.btn-ic-outline {
+    background: transparent;
+    border-color: #fff;
+    color: #fff;
+}
+
+.btn-ic-outline:hover {
+    background: #fff;
+    color: var(--ic-black);
+}
+
+.btn-ic-outline-dark {
+    background: transparent;
+    border-color: var(--ic-black);
+    color: var(--ic-black);
+}
+
+.btn-ic-outline-dark:hover {
+    background: var(--ic-black);
+    color: #fff;
+}
+
+.btn-ic-gold {
+    background: var(--ic-gold);
+    border-color: var(--ic-gold);
+    color: var(--ic-black);
+}
+
+.btn-ic-gold:hover {
+    background: transparent;
+    color: var(--ic-gold);
+}
+
+/* ---------- HERO ---------- */
+
+.hero-ic {
+    position: relative;
+    min-height: 440px;
+    display: flex;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    border-bottom: 4px solid var(--ic-red);
+}
+
+.hero-ic::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(18, 18, 18, .95) 0%,
+        rgba(18, 18, 18, .55) 100%
+    );
+}
+
+.hero-ic .contenido {
+    position: relative;
+    z-index: 1;
+    color: #fff;
+}
+
+.hero-ic .contenido h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+}
+
+/* ---------- TARJETAS ---------- */
+
+.card-ic {
+    background: #fff;
+    border: 1px solid var(--ic-border);
+    border-radius: .4rem;
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+}
+
+.card-ic:hover {
+    transform: translateY(-4px);
+    border-color: var(--ic-red);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .12);
+}
+
+.stat-card {
+    text-align: center;
+    padding: 1.5rem 1rem;
+}
+
+.stat-card .num {
+    font-family: var(--font-titulo);
+    font-size: 2.4rem;
+    color: var(--ic-black);
+}
+
+.stat-card .label {
+    font-family: var(--font-detalle);
+    text-transform: uppercase;
+    color: var(--ic-gray);
+    letter-spacing: 1px;
+    font-size: .85rem;
+}
+
+.zona-card {
+    overflow: hidden;
+    border: none;
+    border-radius: .4rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+    position: relative;
+}
+
+.zona-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    transition: transform .35s ease;
+    display: block;
+}
+
+.zona-card:hover img {
+    transform: scale(1.07);
+}
+
+/* ---------- SECCIONES Y TABLAS ---------- */
+
+.section-dark {
+    background: var(--ic-black);
+    color: #fff;
+}
+
+.table-ic {
+    width: 100%;
+}
+
+.table-ic thead th {
+    background: var(--ic-black);
+    color: var(--ic-gold);
+    font-family: var(--font-detalle);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    border: none;
+}
+
+.table-ic tbody tr {
+    transition: background .2s ease;
+}
+
+.table-ic tbody tr:hover {
+    background: #FBEAEA;
+}
+
+/* ---------- ESTADOS ---------- */
+
+.badge-ic-activa,
+.badge-ic-vencida,
+.badge-ic-cancelada,
+.badge-ic-gold {
+    font-family: var(--font-detalle);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.badge-ic-activa {
+    background: var(--ic-red);
+    color: #fff;
+}
+
+.badge-ic-vencida {
+    background: var(--ic-gray);
+    color: #fff;
+}
+
+.badge-ic-cancelada {
+    background: #333;
+    color: #fff;
+}
+
+.badge-ic-gold {
+    background: var(--ic-gold);
+    color: var(--ic-black);
+}
+
+/* ---------- FORMULARIOS ---------- */
+
+.form-ic label {
+    font-family: var(--font-detalle);
+    text-transform: uppercase;
+    font-size: .85rem;
+    font-weight: 700;
+    color: var(--ic-gray);
+}
+
+.form-ic .form-control:focus,
+.form-ic .form-select:focus {
+    border-color: var(--ic-red);
+    box-shadow: 0 0 0 .2rem rgba(183, 28, 28, .15);
+}
+
+.card-form {
+    background: #fff;
+    border-top: 4px solid var(--ic-red);
+    border-radius: .4rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .08);
+    padding: 2rem;
+}
+
+/* ==========================================
+   PAGINACIÓN - CLIENTES Y MEMBRESÍAS
+   ========================================== */
+
+:is(.clientes-page, .membresias-page)
+.paginacion-contenedor {
+    padding: 28px 20px;
+    border-top: 1px solid var(--ic-border);
+    text-align: center;
+    background: #fff;
+}
+
+:is(.clientes-page, .membresias-page)
+.paginacion-info {
+    margin: 0 0 18px;
+    color: var(--ic-gray);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+:is(.clientes-page, .membresias-page)
+.paginacion-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+:is(.clientes-page, .membresias-page)
+.paginacion-google .numeros {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+/* ---------- NÚMEROS ---------- */
+
+:is(.clientes-page, .membresias-page)
+.paginacion-google .numero {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 42px;
+    height: 42px;
+    padding: 0 10px;
+
+    background: #fff;
+    border: 1px solid var(--ic-border);
+    border-radius: 50%;
+
+    color: var(--ic-black);
+    font-family: var(--font-detalle);
+    font-size: 16px;
+    font-weight: 700;
+
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+/* ---------- HOVER ---------- */
+
+:is(.clientes-page, .membresias-page)
+.paginacion-google .numero:hover {
+    background: #FBEAEA;
+    border-color: var(--ic-red);
+    color: var(--ic-red);
+    transform: translateY(-2px);
+}
+
+/* ---------- PÁGINA ACTIVA ---------- */
+
+:is(.clientes-page, .membresias-page)
+.paginacion-google .numero.activo {
+    background: var(--ic-red);
+    border-color: var(--ic-red);
+    color: #fff;
+    box-shadow: 0 3px 10px rgba(183, 28, 28, .2);
+}
+
+:is(.clientes-page, .membresias-page)
+.paginacion-google .numero.activo:hover {
+    background: var(--ic-red-dark);
+    color: #fff;
+}
+
+/* ---------- ANTERIOR / SIGUIENTE ---------- */
+
+:is(.clientes-page, .membresias-page)
+.paginacion-google .navegacion {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 10px 14px;
+    border-radius: 8px;
+
+    color: var(--ic-black);
+    font-family: var(--font-detalle);
+    font-size: 15px;
+    font-weight: 700;
+
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+:is(.clientes-page, .membresias-page)
+.paginacion-google .navegacion:hover {
+    color: var(--ic-red);
+    background: #FBEAEA;
+}
+
+:is(.clientes-page, .membresias-page)
+.paginacion-google a:focus-visible {
+    outline: 3px solid var(--ic-gold);
+    outline-offset: 3px;
+}
+
+/* ---------- FOOTER ---------- */
+
+.footer-ic {
+    background: var(--ic-black);
+    color: #aaa;
+    text-align: center;
+    padding: 2rem 0;
+}
+
+.footer-ic img {
+    height: 34px;
+    margin-bottom: .5rem;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 768px) {
+
+    .hero-ic {
+        min-height: 350px;
+    }
+
+    .card-form {
+        padding: 1.25rem;
+    }
+
+    :is(.clientes-page, .membresias-page)
+    .paginacion-contenedor {
+        padding: 20px 10px;
+    }
+
+    :is(.clientes-page, .membresias-page)
+    .paginacion-google {
+        gap: 6px;
+    }
+
+    :is(.clientes-page, .membresias-page)
+    .paginacion-google .numero {
+        min-width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
+    :is(.clientes-page, .membresias-page)
+    .paginacion-google .navegacion {
+        padding: 8px;
+        font-size: 13px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .card-ic,
+    .zona-card img,
+    .paginacion-google a {
+        transition: none;
+    }
+}
+.paginacion-google button {
+    cursor: pointer;
+    font-family: var(--font-detalle);
+}
+
+.paginacion-google button:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+/* PAGINACION MEMBRESIAS - IMPERIUM CROSS */
+
+.membresias-page .paginacion-contenedor {
+    padding: 28px 16px;
+    text-align: center;
+    background: #ffffff;
+    border-top: 1px solid #e4e4e4;
+}
+
+.membresias-page .paginacion-info {
+    margin-bottom: 18px;
+    color: #5C5C5C;
+    font-size: 14px;
+}
+
+.membresias-page .paginacion-google {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.membresias-page .numeros {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.membresias-page .numero {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid #e4e4e4;
+    color: #1C1C1C;
+    text-decoration: none;
+    font-weight: 700;
+    transition: 0.2s;
+}
+
+.membresias-page .numero:hover {
+    background: #fbeaea;
+    color: #B71C1C;
+    border-color: #B71C1C;
+}
+
+.membresias-page .numero.activo {
+    background: #B71C1C;
+    border-color: #B71C1C;
+    color: #ffffff;
+}
+
+.membresias-page .navegacion {
+    padding: 10px 14px;
+    border-radius: 8px;
+    color: #1C1C1C;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.membresias-page .navegacion:hover {
+    background: #fbeaea;
+    color: #B71C1C;
+}

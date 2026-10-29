@@ -4,6 +4,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pe.edu.utp.gimnasio.model.Cliente;
 import pe.edu.utp.gimnasio.repository.ClienteRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 
 import java.util.List;
 
@@ -32,6 +35,18 @@ public class ClienteService {
     public List<Cliente> buscarPorNombre(String texto) {
         return clienteRepository.findByNombresContainingIgnoreCaseOrApellidosContainingIgnoreCase(texto, texto);
     }
+
+    
+    public Page<Cliente> listarPaginado(int pagina) {
+    return clienteRepository.findAll(
+        PageRequest.of(
+            Math.max(0, pagina),
+            50,
+            Sort.by("id").ascending()
+        )
+    );
+}
+ 
 
     /**
      * Registra un cliente nuevo aplicando las reglas de negocio:

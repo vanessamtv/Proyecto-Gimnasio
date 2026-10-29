@@ -12,6 +12,9 @@ import pe.edu.utp.gimnasio.service.AsistenciaService;
 import pe.edu.utp.gimnasio.service.ClienteService;
 import pe.edu.utp.gimnasio.service.MembresiaService;
 
+import org.springframework.data.domain.Page;
+import org.springframework.ui.Model;
+
 @Controller
 @RequestMapping("/clientes")
 public class ClienteController {
@@ -57,6 +60,35 @@ public class ClienteController {
         model.addAttribute("asistenciasMes", asistenciaService.contarAsistenciasDelMes(cliente));
         return "clientes/detalle";
     }
+
+    
+    @GetMapping
+    public String listarClientes(
+        @RequestParam(defaultValue = "0") int page,
+        Model model) {
+
+    Page<Cliente> resultado =
+            clienteService.listarPaginado(page);
+
+    model.addAttribute(
+            "clientes", resultado.getContent()
+    );
+
+    model.addAttribute(
+            "paginaActual", resultado.getNumber()
+    );
+
+    model.addAttribute(
+            "totalPaginas", resultado.getTotalPages()
+    );
+
+    model.addAttribute(
+            "totalRegistros", resultado.getTotalElements()
+    );
+
+    return "clientes/listar";
+}
+
 
     @PostMapping("/guardar")
     public String guardar(@Valid @ModelAttribute("cliente") ClienteDTO dto, BindingResult binding,

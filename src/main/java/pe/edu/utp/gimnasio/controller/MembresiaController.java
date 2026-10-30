@@ -1,4 +1,3 @@
-
 package pe.edu.utp.gimnasio.controller;
 
 import jakarta.persistence.EntityManager;
